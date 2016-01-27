@@ -4,5 +4,15 @@ require __DIR__ . '/autoload.php';
 $test = new \App\Db();
 $result1 = $test->execute('SELECT * FROM users');
 $result2 = $test->execute('SELECT * FROM users WHERE id_user = :id', [':id' => 1]);
-var_dump($result1); echo '<br>';
-var_dump($result2); echo '<br>';
+if ($result1) {
+    echo 'Тест метода execute класса Db : SELECT * FROM users; - пройден успешно <br>';
+} else {
+    echo 'Тест метода execute класса Db : SELECT * FROM users; - не пройден <br>';
+}
+if ($result2) {
+    echo 'Тест метода execute класса Db : SELECT * FROM users WHERE id_user = :id;
+          с подстановкой параметров - пройден успешно <br>';
+} else {
+    echo 'Тест метода execute класса Db : SELECT * FROM users WHERE id_user = :id;
+          с подстановкой параметров - не пройден <br>';
+}
