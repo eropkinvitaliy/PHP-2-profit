@@ -14,7 +14,4 @@ abstract class Model
             static::class
         );
     }
-
-
-
 }
