@@ -8,6 +8,7 @@ use App\Db;
 class News extends Model
 {
     const TABLE = 'news';
+    const Pk = 'id_news';
     public $title;
     public $description;
     public $published;

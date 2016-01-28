@@ -11,13 +11,15 @@
     <?php foreach ($news as $article):?>
         <div style="border: 1px solid; border-radius: 5px;">
         <h3>
-          <a href="/Views/article.php?id=<?php echo $article->id_news?>">
+          <a href="/App/Controllers/article.php?id=<?php echo $article->id_news?>">
               <?php echo $article->title?>
           </a>
         </h3>
     <div style="margin: auto">
         <?php echo $article->description?>
+        <a href="/App/Controllers/article.php?id=<?php echo $article->id_news?>">Читать полностью >>></a>
     </div>
+            <p style="margin-top: 10px"><b>Опубликовано :</b> <?php echo $article->published; ?></p>
         </div>
     <?php endforeach ?>
 </div>

@@ -5,6 +5,7 @@ namespace App;
 abstract class Model
 {
     const TABLE = '';
+    const Pk = '';
 
     public static function findAll()
     {
@@ -13,5 +14,15 @@ abstract class Model
             'SELECT * FROM ' . static::TABLE,
             static::class
         );
+    }
+
+    public static function findById($id)
+    {
+        $db = new Db();
+        return $res =
+            $db->query(
+                'SELECT * FROM ' . static::TABLE . ' WHERE ' . static::Pk . ' = :id',
+                static::class, [':id' => $id])
+                ?: false;
     }
 }
