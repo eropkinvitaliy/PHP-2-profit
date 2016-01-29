@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/autoload.php';
+require __DIR__ . '/../autoload.php';
 
 $test = new \App\Db();
 $result1 = $test->execute('SELECT * FROM users');
