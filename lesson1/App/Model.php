@@ -30,7 +30,7 @@ abstract class Model
     {
         $db = new Db();
         return $res = $db->query(
-            'SELECT * FROM ' . static::TABLE . ' ORDER BY published DESC  LIMIT ' . $limit,
+            sprintf('SELECT * FROM ' . static::TABLE . ' ORDER BY '. static::Pk .' DESC  LIMIT %u', $limit),
             static::class) ?: false;
     }
 }
