@@ -6,7 +6,6 @@
 </head>
 <body>
 <div>
-    <?php foreach ($articles as $article): ?>
         <article style="margin: 10%">
             <section style="padding-right: 20%">
                 <h1><?php echo $article->title; ?></h1>
@@ -18,7 +17,6 @@
                 <p style="margin-top: 2px "><b>Автор:</b> Петров пётр</p>
             </section>
         </article>
-    <?php endforeach ?>
     <a href="/../../index.php">На главную</a>
 </div>
 </body>

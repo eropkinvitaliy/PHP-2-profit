@@ -22,7 +22,15 @@ abstract class Model
         return $res =
             $db->query(
                 'SELECT * FROM ' . static::TABLE . ' WHERE ' . static::Pk . ' = :id',
-                static::class, [':id' => $id])
+                static::class, [':id' => $id])[0]
                 ?: false;
+    }
+
+    public static function findLastNews($limit)
+    {
+        $db = new Db();
+        return $res = $db->query(
+            'SELECT * FROM ' . static::TABLE . ' ORDER BY published DESC  LIMIT ' . $limit,
+            static::class) ?: false;
     }
 }

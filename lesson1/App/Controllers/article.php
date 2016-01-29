@@ -2,8 +2,12 @@
 require __DIR__ . '/../../autoload.php';
 $id = $_GET['id'] ?: false;
 if ($id) {
-    $articles = App\Models\News::findById($id);
-    include __DIR__ . '/../../Views/article.php';
+    if ($article = App\Models\News::findById($id)) {
+        include __DIR__ . '/../../Views/article.php';
+    } else {
+        echo 'Запись с таким id отсутствует';
+    }
+
 } else {
-    echo 'Параметр id не передан';
+    header('Location: /');
 }

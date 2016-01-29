@@ -16,12 +16,5 @@ class News extends Model
     public $user;
 
 
-    public static function findLastNews($limit)
-    {
-        $db = new Db();
-        return $res = $db->query(
-            'SELECT * FROM ' . static::TABLE . ' ORDER BY published DESC  LIMIT :limit ',
-            static::class, [':limit' => $limit]
-        ) ?: false;
-    }
+
 }
