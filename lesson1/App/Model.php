@@ -26,7 +26,7 @@ abstract class Model
                 ?: false;
     }
 
-    public static function findLastNews($limit)
+    public static function findLastRecords($limit)
     {
         $db = new Db();
         return $res = $db->query(
