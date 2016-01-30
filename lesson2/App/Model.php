@@ -89,9 +89,6 @@ abstract class Model
         $sql = 'UPDATE ' . static::TABLE .
             ' SET ' . implode(', ', $columns) .
             ' WHERE ' . static::PK . ' = ' . $this->getPk();
-        ?><pre><?php var_dump($sql);
-        var_dump($values);
-        ?></pre><?php
         $db = Db::instance();
         $db->execute($sql, $values);
     }
