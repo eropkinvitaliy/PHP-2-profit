@@ -8,6 +8,7 @@ class User extends Model
 {
     const TABLE = 'users';
     const Pk = 'id_user';
+    public $id_user;
     public $email;
     public $firstname;
     public $lastname;
