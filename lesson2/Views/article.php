@@ -17,7 +17,9 @@
                 <p style="margin-top: 2px "><b>Автор:</b> Петров пётр</p>
             </section>
         </article>
-    <a href="/../../index.php">На главную</a>
+    <button style="background-color: cornflowerblue"><a href="/../App/Controllers/update.php?id=<?php echo $id?>">Изменить</a></button>
+    <button style="background-color: red"><a href="/../App/Controllers/delete.php?id=<?php echo $id?>">Удалить</a></button>
+    <button style="background-color: aliceblue"><a href="/../../index.php">Отмена</a></button>
 </div>
 </body>
 </html>

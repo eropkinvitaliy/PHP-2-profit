@@ -8,6 +8,7 @@
 
 <div style="margin: 3% 10%;">
     <h1 style="text-align: center">Последние новости</h1>
+    <p><button style="background-color: greenyellow"><a href="/../App/Controllers/create.php">Добавить новость</a></button></p>
     <?php foreach ($news as $article):?>
         <div style="border: 1px solid; border-radius: 5px;">
         <h3>

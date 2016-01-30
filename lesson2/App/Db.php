@@ -25,12 +25,7 @@ class Db
     public function execute($sql, $options = [])
     {
         $sth = $this->dbh->prepare($sql);
-        ?><pre><?php
-        var_dump($sth);
-        var_dump($options);
-        ?></pre><?php
         $res = $sth->execute($options);
-        var_dump($sth->errorInfo());
         return $res;
     }
 

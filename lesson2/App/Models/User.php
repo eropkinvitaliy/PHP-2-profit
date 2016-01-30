@@ -7,7 +7,7 @@ use App\Db;
 class User extends Model
 {
     const TABLE = 'users';
-    const Pk = 'id_user';
+    const PK = 'id_user';
     public $id_user;
     public $email;
     public $firstname;

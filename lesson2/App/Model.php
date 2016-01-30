@@ -2,12 +2,12 @@
 
 namespace App;
 
-use App\Config;
+use App\Db;
 
 abstract class Model
 {
     const TABLE = '';
-    const Pk = '';
+    const PK = '';
 
     public static function findAll()
     {
@@ -23,7 +23,7 @@ abstract class Model
         $db = Db::instance();
         return $res =
             $db->query(
-                'SELECT * FROM ' . static::TABLE . ' WHERE ' . static::Pk . ' = :id',
+                'SELECT * FROM ' . static::TABLE . ' WHERE ' . static::PK . ' = :id',
                 static::class, [':id' => $id])[0]
                 ?: false;
     }
@@ -32,24 +32,31 @@ abstract class Model
     {
         $db = Db::instance();
         return $res = $db->query(
-            sprintf('SELECT * FROM ' . static::TABLE . ' ORDER BY ' . static::Pk . ' DESC  LIMIT %u', $limit),
+            sprintf('SELECT * FROM ' . static::TABLE . ' ORDER BY ' . static::PK . ' DESC  LIMIT %u', $limit),
             static::class) ?: false;
     }
 
     public function isNew()
     {
-        return empty($this->id);
+        return empty($this->{static::PK});
     }
+
+    public function save()
+    {
+        if ($this->isNew()) {
+            $this->insert();
+        } else {
+            $this->update();
+        }
+    }
+
 
     public function insert()
     {
-        if (!$this->isNew()) {
-            return;
-        }
         $columns = [];
         $values = [];
         foreach ($this as $k => $v) {
-            if (static::Pk == $k) {
+            if (static::PK == $k) {
                 continue;
             }
             $columns[] = $k;
@@ -61,5 +68,42 @@ abstract class Model
         $db = Db::instance();
         $db->execute($sql, $values);
         $this->id = $db->lastInsertId();
+    }
+
+    public function getPk()
+    {
+        return $this->{static::PK};
+    }
+
+    public function update()
+    {
+        $columns = [];
+        $values = [];
+        foreach ($this as $k => $v) {
+            if (static::PK == $k) {
+                continue;
+            }
+            $columns[] = $k . '=:' . $k;
+            $values[':' . $k] = $v;
+        }
+        $sql = 'UPDATE ' . static::TABLE .
+            ' SET ' . implode(', ', $columns) .
+            ' WHERE ' . static::PK . ' = ' . $this->getPk();
+        ?><pre><?php var_dump($sql);
+        var_dump($values);
+        ?></pre><?php
+        $db = Db::instance();
+        $db->execute($sql, $values);
+    }
+
+    public function delete()
+    {
+        if ($this->isNew()) {
+            return false;
+        }
+        $sql = 'DELETE FROM ' . static::TABLE .
+            ' WHERE ' . static::PK . ' = ' . $this->getPk();
+        $db = Db::instance();
+        $db->execute($sql);
     }
 }
