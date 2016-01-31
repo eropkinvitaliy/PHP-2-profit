@@ -9,6 +9,16 @@ abstract class Model
     const TABLE = '';
     const PK = '';
 
+    public function isNew()
+    {
+        return empty($this->{static::PK});
+    }
+
+    public function getPk()
+    {
+        return $this->{static::PK};
+    }
+
     public static function findAll()
     {
         $db = Db::instance();
@@ -36,11 +46,6 @@ abstract class Model
             static::class) ?: false;
     }
 
-    public function isNew()
-    {
-        return empty($this->{static::PK});
-    }
-
     public function save()
     {
         if ($this->isNew()) {
@@ -49,7 +54,6 @@ abstract class Model
             $this->update();
         }
     }
-
 
     public function insert()
     {
@@ -68,11 +72,6 @@ abstract class Model
         $db = Db::instance();
         $db->execute($sql, $values);
         $this->id = $db->lastInsertId();
-    }
-
-    public function getPk()
-    {
-        return $this->{static::PK};
     }
 
     public function update()

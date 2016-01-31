@@ -8,7 +8,7 @@
 <div>
     <article style="margin: 10%">
         <section style="padding-right: 20%">
-            <?php $pagetitle = $id ? 'Редактирование' : 'Добавление новости' ?>
+            <?php $pagetitle = !empty($id) ? 'Редактирование' : 'Добавление новости' ?>
             <h1> <?php echo $pagetitle; ?> <i><?php echo $article->title; ?></i></h1>
 
             <form method="post" action="/../App/Controllers/save.php">

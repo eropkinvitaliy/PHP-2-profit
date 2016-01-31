@@ -10,8 +10,8 @@ class Db
     protected function __construct()
     {
         $config = Config::instance();
-        echo $config->data['db']['host'];
-        $this->dbh = new \PDO('mysql:host=127.0.0.1;dbname=phplessons', 'root', '');
+        $this->dbh = new \PDO($config->data['db']['driver'] . ':host='.$config->data['db']['host'] .';dbname=' .
+            $config->data['db']['dbname'], $config->data['db']['user'], $config->data['db']['password']);
     }
 
     public static function instance()

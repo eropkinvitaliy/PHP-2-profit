@@ -22,8 +22,6 @@ class Config
     {
         if (null === static::$instance) {
             static::$instance = new static;
-
-
         }
         return static::$instance;
     }
