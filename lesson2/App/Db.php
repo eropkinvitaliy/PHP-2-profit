@@ -2,24 +2,18 @@
 namespace App;
 
 use App\Config;
+use App\TSinglton;
+
 class Db
 {
+    use TSinglton;
     protected $dbh;
-    protected static $instance;
 
     protected function __construct()
     {
         $config = Config::instance();
         $this->dbh = new \PDO($config->data['db']['driver'] . ':host='.$config->data['db']['host'] .';dbname=' .
             $config->data['db']['dbname'], $config->data['db']['user'], $config->data['db']['password']);
-    }
-
-    public static function instance()
-    {
-        if (null === static::$instance) {
-            static::$instance = new static;
-        }
-        return static::$instance;
     }
 
     public function execute($sql, $options = [])

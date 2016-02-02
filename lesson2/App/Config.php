@@ -1,28 +1,15 @@
 <?php
 
 namespace App;
-
+use App\TSinglton;
 
 class Config
 {
+    use TSinglton;
     public $data = [];
-    protected static $instance;
 
     protected function __construct()
     {
-//        $dbconfig = explode(PHP_EOL, file_get_contents(__DIR__ . '/dbconfig.txt'));
-//        foreach ($dbconfig as $value) {
-//            $dbstring = explode('=', $value);
-//            $this->data['db'][$dbstring[0]] = $dbstring[1];
-//        }
         $this->data = include(__DIR__ . '/dbconfig.php');
-    }
-
-    public static function instance()
-    {
-        if (null === static::$instance) {
-            static::$instance = new static;
-        }
-        return static::$instance;
     }
 }
