@@ -16,6 +16,4 @@ class News extends Model
     public $status;
     public $user_id;
 
-
-
 }

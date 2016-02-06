@@ -26,6 +26,7 @@
                     <?php echo $article->description ?>
                     <a href="/App/Controllers/article.php?id=<?php echo $article->id_news ?>">Читать полностью >>></a>
                 </div>
+                <p style="margin-top: 10px"><b>Автор :</b> <?php echo $article->author->firstname . ' ' .$article->author->lastname; ?></p>
                 <p style="margin-top: 10px"><b>Опубликовано :</b> <?php echo $article->published; ?></p>
             </div>
         <?php endforeach ?>

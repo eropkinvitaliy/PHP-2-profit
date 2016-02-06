@@ -10,7 +10,7 @@ if (!empty($post)) {
     $article->description = trim($post['description']);
     $article->published = date("Y-m-d H:i:s");
     $article->status = STATUS_ACTIVE;
-    $article->user_id = 1;
+    $article->author_id = 1;
     $article->save();
     include __DIR__ . '/../../Views/article.php';
 } else {

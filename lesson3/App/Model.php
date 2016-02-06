@@ -4,10 +4,33 @@ namespace App;
 
 use App\Db;
 
-abstract class Model
+abstract class Model implements \ArrayAccess, \Countable
 {
     const TABLE = '';
     const PK = '';
+
+    protected $container;
+
+    /**
+     * Функция конструктор для использования интерфейса ArrayAccess
+     * обрабатывает входящие данные при создании объекта(ов)
+     *
+     * @param array
+     */
+    public function __construct()
+    {
+        $argfunc = func_get_args();
+        $argcount = func_num_args();
+
+        if ($argcount == 0) {
+            $this->container = [];
+        }
+        if ($argcount == 1 && is_array($argfunc[0])) {
+            $this->container = $argfunc[0];
+        } else {
+            $this->container = $argfunc;
+        }
+    }
 
     public function isNew()
     {
@@ -70,7 +93,7 @@ abstract class Model
                 VALUES(' . implode(',', array_keys($values)) . ')
         ';
         $db = Db::instance();
-       $db->execute($sql, $values);
+        $db->execute($sql, $values);
         $this->id = $db->lastInsertId();
     }
 
@@ -101,5 +124,63 @@ abstract class Model
             ' WHERE ' . static::PK . ' = ' . $this->getPk();
         $db = Db::instance();
         $db->execute($sql);
+        return true;
+    }
+
+    /**
+     * Метод реализующий интерфейс ArrayAccess
+     *
+     * @param string $key
+     * @return bool
+     */
+    public function offsetExists($key)
+    {
+        return isset($this->container[$key]);
+    }
+
+    /**
+     * Метод реализующий интерфейс ArrayAccess
+     *
+     * @param string $key
+     * @return array или NULL
+     */
+    public function offsetGet($key)
+    {
+        return $this->offsetExists($key) ? $this->container[$key] : null;
+    }
+
+    /**
+     * Метод реализующий интерфейс ArrayAccess
+     *
+     * @param string $key
+     * @param mixed $value
+     */
+    public function offsetSet($key, $value)
+    {
+        if (is_null($key)) {
+            $this->container[] = $value;
+        } else {
+            $this->container[$key] = $value;
+        }
+    }
+
+    /**
+     * Метод реализующий интерфейс ArrayAccess
+     *
+     * @param string $key
+     */
+    public function offsetUnset($key)
+    {
+        unset($this->container[$key]);
+    }
+
+    /**
+     * Метод реализующий интерфейс Countable
+     *
+     * @return integer Колличество элементов
+     */
+    public function count()
+    {
+        return $this->length();
     }
 }
