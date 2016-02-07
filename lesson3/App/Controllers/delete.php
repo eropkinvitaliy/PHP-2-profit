@@ -11,4 +11,5 @@ if (!empty($id)) {
     }
 } else {
     header('Location: /');
+    exit(0);
 }

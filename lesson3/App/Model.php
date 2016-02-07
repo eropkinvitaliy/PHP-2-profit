@@ -83,7 +83,7 @@ abstract class Model implements \ArrayAccess, \Countable
         $columns = [];
         $values = [];
         foreach ($this as $k => $v) {
-            if (static::PK == $k) {
+            if (static::PK == $k || 'data' == $k) {
                 continue;
             }
             $columns[] = $k;
@@ -94,7 +94,7 @@ abstract class Model implements \ArrayAccess, \Countable
         ';
         $db = Db::instance();
         $db->execute($sql, $values);
-        $this->id = $db->lastInsertId();
+        $this->{static::PK} = $db->lastInsertId();
     }
 
     public function update()
@@ -102,7 +102,7 @@ abstract class Model implements \ArrayAccess, \Countable
         $columns = [];
         $values = [];
         foreach ($this as $k => $v) {
-            if (static::PK == $k) {
+            if (static::PK == $k || 'data' == $k) {
                 continue;
             }
             $columns[] = $k . '=:' . $k;

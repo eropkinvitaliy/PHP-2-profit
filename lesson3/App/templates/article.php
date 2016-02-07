@@ -20,16 +20,14 @@
 <body>
 
 <div class="container">
-    <button style="background-color: cornflowerblue"><a href="/../App/Controllers/update.php?id=<?php echo $id?>">Изменить</a></button>
-    <button style="background-color: red"><a href="/../App/Controllers/delete.php?id=<?php echo $id?>">Удалить</a></button>
+    <button style="background-color: cornflowerblue"><a href="/../App/Controllers/update.php?id=<?php echo $article->id_news;?>">Изменить</a></button>
+    <button style="background-color: red"><a href="/../App/Controllers/delete.php?id=<?php echo $article->id_news;?>">Удалить</a></button>
     <button style="background-color: aliceblue"><a href="/../../index.php">На главную</a></button>
         <div class="panel panel-success">
             <div class="panel-heading">
-                <a href="/App/Controllers/article.php?id=<?php echo $article->id_news ?>">
-                    <h1>    <?php echo $article->title; ?></h1></a>
+                    <h1> <?php echo $article->title; ?></h1>
             </div>
             <div class="panel-body"><?php echo $article->description; ?>
-                <p><a href="/App/Controllers/article.php?id=<?php echo $article->id_news ?>"></a></p>
             </div>
             <div class="panel-footer" style="font-size: small"><p><b>Автор
                         : </b><i> <?php echo $article->author->firstname . ' ' . $article->author->lastname; ?></i></p>
