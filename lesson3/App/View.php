@@ -8,6 +8,12 @@ class View
 {
     use TMagic;
 
+    /**
+     * Метод присваивает значения указанным свойствам и подключает шаблон
+     *
+     * @param $template string Путь к шаблону
+     * @return string Шаблон
+     */
     public function render($template)
     {
         ob_start();
@@ -19,6 +25,12 @@ class View
         ob_end_clean();
         return $content;
     }
+
+    /**
+     * Метод выводит на экран заданный шаблон
+     *
+     * @param $template string Путь к шаблону
+     */
     public function display($template)
     {
         echo $this->render($template);
