@@ -20,30 +20,22 @@
 <body>
 
 <div class="container">
-    <h1>Новости</h1>
-    <?php if (!empty($news)): ?>
-        <?php foreach ($news as $article) : ?>
-
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <a href="/App/Controllers/article.php?id=<?php echo $article->id_news ?>">
-                        <h4>    <?php echo $article->title; ?></h4></a>
-                </div>
-                <div class="panel-body"><?php echo $article->description; ?>
-                    <p><a href="/App/Controllers/article.php?id=<?php echo $article->id_news ?>">Подробно >>></a></p>
-                </div>
-                <div class="panel-footer" style="font-size: small"><p><b>Автор
-                            : </b><i> <?php echo $article->author->firstname . ' ' . $article->author->lastname; ?></i>
-                    </p>
-
-                    <p><b>Опубликовано: <?php echo $article->published; ?></b></p>
-                </div>
+    <button style="background-color: cornflowerblue"><a href="/../App/Controllers/update.php?id=<?php echo $id?>">Изменить</a></button>
+    <button style="background-color: red"><a href="/../App/Controllers/delete.php?id=<?php echo $id?>">Удалить</a></button>
+    <button style="background-color: aliceblue"><a href="/../../index.php">На главную</a></button>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <a href="/App/Controllers/article.php?id=<?php echo $article->id_news ?>">
+                    <h1>    <?php echo $article->title; ?></h1></a>
             </div>
-
-        <?php endforeach; ?>
-    <?php else : ?>
-        <h2>Новостей пока нет. Добавьте свою новость</h2>
-    <?php endif ?>
+            <div class="panel-body"><?php echo $article->description; ?>
+                <p><a href="/App/Controllers/article.php?id=<?php echo $article->id_news ?>"></a></p>
+            </div>
+            <div class="panel-footer" style="font-size: small"><p><b>Автор
+                        : </b><i> <?php echo $article->author->firstname . ' ' . $article->author->lastname; ?></i></p>
+                <p><b>Опубликовано: <?php echo $article->published; ?></b></p>
+            </div>
+        </div>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

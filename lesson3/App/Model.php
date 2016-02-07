@@ -9,7 +9,7 @@ abstract class Model implements \ArrayAccess, \Countable
     const TABLE = '';
     const PK = '';
 
-    protected $container;
+    protected $data;
 
     /**
      * Функция конструктор для использования интерфейса ArrayAccess
@@ -23,12 +23,12 @@ abstract class Model implements \ArrayAccess, \Countable
         $argcount = func_num_args();
 
         if ($argcount == 0) {
-            $this->container = [];
+            $this->data = [];
         }
         if ($argcount == 1 && is_array($argfunc[0])) {
-            $this->container = $argfunc[0];
+            $this->data = $argfunc[0];
         } else {
-            $this->container = $argfunc;
+            $this->data = $argfunc;
         }
     }
 
@@ -135,7 +135,7 @@ abstract class Model implements \ArrayAccess, \Countable
      */
     public function offsetExists($key)
     {
-        return isset($this->container[$key]);
+        return isset($this->data[$key]);
     }
 
     /**
@@ -146,7 +146,7 @@ abstract class Model implements \ArrayAccess, \Countable
      */
     public function offsetGet($key)
     {
-        return $this->offsetExists($key) ? $this->container[$key] : null;
+        return $this->offsetExists($key) ? $this->data[$key] : null;
     }
 
     /**
@@ -158,9 +158,9 @@ abstract class Model implements \ArrayAccess, \Countable
     public function offsetSet($key, $value)
     {
         if (is_null($key)) {
-            $this->container[] = $value;
+            $this->data[] = $value;
         } else {
-            $this->container[$key] = $value;
+            $this->data[$key] = $value;
         }
     }
 
@@ -171,7 +171,7 @@ abstract class Model implements \ArrayAccess, \Countable
      */
     public function offsetUnset($key)
     {
-        unset($this->container[$key]);
+        unset($this->data[$key]);
     }
 
     /**
@@ -181,6 +181,6 @@ abstract class Model implements \ArrayAccess, \Countable
      */
     public function count()
     {
-        return $this->length();
+        return count($this->data);
     }
 }
