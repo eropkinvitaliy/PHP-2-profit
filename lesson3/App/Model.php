@@ -12,7 +12,7 @@ abstract class Model implements \ArrayAccess, \Countable
     protected $data;
 
     /**
-     * Функция конструктор для использования интерфейса ArrayAccess
+     * Метод конструктор для использования интерфейса ArrayAccess
      * обрабатывает входящие данные при создании объекта(ов)
      *
      * @param array
@@ -32,16 +32,31 @@ abstract class Model implements \ArrayAccess, \Countable
         }
     }
 
+    /**
+     * Метод проверяет, новая запись или нет
+     *
+     * @return bool
+     */
     public function isNew()
     {
         return empty($this->{static::PK});
     }
 
+    /**
+     * Метод возвращает имя PK модели
+     *
+     * @return string
+     */
     public function getPk()
     {
         return $this->{static::PK};
     }
 
+    /**
+     * Метод ищет все записи модели
+     *
+     * @return array массив объектов
+     */
     public static function findAll()
     {
         $db = Db::instance();
@@ -51,6 +66,12 @@ abstract class Model implements \ArrayAccess, \Countable
         );
     }
 
+    /**
+     * Метод ищет одну запись модели по её PK
+     *
+     * @param $id string PK модели
+     * @return object один объект
+     */
     public static function findById($id)
     {
         $db = Db::instance();
@@ -61,6 +82,12 @@ abstract class Model implements \ArrayAccess, \Countable
                 ?: false;
     }
 
+    /**
+     * Метод ищет заданное колличество последних записей у Модели
+     *
+     * @param $limit integer Колличество записей
+     * @return array Массив объектов
+     */
     public static function findLastRecords($limit)
     {
         $db = Db::instance();
@@ -69,6 +96,11 @@ abstract class Model implements \ArrayAccess, \Countable
             static::class) ?: false;
     }
 
+    /**
+     * Метод решает, что делать с объектом:
+     * сохранять в БД, если он новый или изменить существующий
+     *
+     */
     public function save()
     {
         if ($this->isNew()) {
@@ -78,6 +110,10 @@ abstract class Model implements \ArrayAccess, \Countable
         }
     }
 
+    /**
+     * Метод сохраняет новый объект в БД
+     *
+     */
     public function insert()
     {
         $columns = [];
@@ -97,6 +133,10 @@ abstract class Model implements \ArrayAccess, \Countable
         $this->{static::PK} = $db->lastInsertId();
     }
 
+    /**
+     * Метод производит изменения в существующем объекте и сохраняет его в БД
+     *
+     */
     public function update()
     {
         $columns = [];
@@ -115,6 +155,11 @@ abstract class Model implements \ArrayAccess, \Countable
         $db->execute($sql, $values);
     }
 
+    /**
+     * Метод удаляет объект из БД
+     *
+     * @return bool Возвращает True, если объект удалён и False, если такого объекта нет в БД
+     */
     public function delete()
     {
         if ($this->isNew()) {
