@@ -35,6 +35,7 @@ class View
     {
         echo $this->render($template);
     }
+
     /**
      * Count elements of an object
      * @return int The custom count as an integer.

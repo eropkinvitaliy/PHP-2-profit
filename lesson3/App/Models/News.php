@@ -4,9 +4,9 @@ namespace App\Models;
 
 use App\Model;
 use App\Db;
-use App\Models\Author;
+use App\TIterator;
 
-class News extends Model
+class News extends Model implements \Iterator
 {
     /**
      * Это модель класса для таблицы "Orders" .
@@ -18,6 +18,8 @@ class News extends Model
      * @property integer $status
      * @property integer $author_id
      */
+
+    use TIterator;
 
     const TABLE = 'news';
     const PK = 'id_news';
@@ -70,5 +72,12 @@ class News extends Model
     public function __isset($k)
     {
         return isset($this->data[$k]);
+    }
+
+    public function getProperties()
+    {
+        foreach ($this as $key => $value) {
+            ?><pre><?php var_dump($key, $value);?></pre><?php
+        }
     }
 }
