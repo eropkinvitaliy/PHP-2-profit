@@ -11,7 +11,8 @@ if (!empty($id)) {
         $view->article = $article;
         $view->display(__DIR__ . '/../templates/article.php');
     } else {
-        echo 'Запись с таким id отсутствует';
+        header('Location: /App/templates/404notnews.php');
+        exit(0);
     }
 } else {
     header('Location: /');

@@ -71,6 +71,9 @@ class News extends Model implements \Iterator
      */
     public function __isset($k)
     {
+        if ('author' == $k && isset($this->author_id)) {
+            return true;
+        }
         return isset($this->data[$k]);
     }
 
