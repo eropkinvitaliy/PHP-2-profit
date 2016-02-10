@@ -20,9 +20,9 @@
 <body>
 
 <div class="container">
-    <button style="background-color: cornflowerblue"><a href="/../App/Controllers/update.php?id=<?php echo $article->id_news;?>">Изменить</a></button>
-    <button style="background-color: red"><a href="/../App/Controllers/delete.php?id=<?php echo $article->id_news;?>">Удалить</a></button>
-    <button style="background-color: aliceblue"><a href="/../../index.php">На главную</a></button>
+    <button style="background-color: cornflowerblue"><a href="/news/update/?id=<?php echo $article->id_news;?>">Изменить</a></button>
+    <button style="background-color: red"><a href="/news/delete/?id=<?php echo $article->id_news;?>">Удалить</a></button>
+    <button style="background-color: aliceblue"><a href="/">На главную</a></button>
         <div class="panel panel-success">
             <div class="panel-heading">
                     <h1> <?php echo $article->title; ?></h1>

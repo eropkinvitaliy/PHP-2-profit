@@ -22,18 +22,18 @@
 <div class="container">
     <h1>Новости</h1>
     <button class="btn btn-success btn-md" style="margin-bottom: 5px">
-    <a href="href=/../App/Controllers/create.php" style="text-decoration: none; color: white">    Написать свою новость</a>
+    <a href="href=/news/create" style="text-decoration: none; color: white">    Написать свою новость</a>
     </button>
     <?php if (!empty($news)): ?>
         <?php foreach ($news as $article) : ?>
 
             <div class="panel panel-success">
                 <div class="panel-heading">
-                    <a href="/App/Controllers/article.php?id=<?php echo $article->id_news ?>">
+                    <a href="/news/one/?id=<?php echo $article->id_news ?>">
                         <h4>    <?php echo $article->title; ?></h4></a>
                 </div>
                 <div class="panel-body"><?php echo $article->description; ?>
-                    <p><a href="/App/Controllers/article.php?id=<?php echo $article->id_news ?>">Подробно >>></a></p>
+                    <p><a href="/news/one/?id=<?php echo $article->id_news ?>">Подробно >>></a></p>
                 </div>
                 <div class="panel-footer" style="font-size: small">
                     <?php if (!empty($article->author)):?>

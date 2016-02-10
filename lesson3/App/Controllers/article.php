@@ -9,7 +9,7 @@ if (!empty($id)) {
         $view = new View();
         $view->title = 'Страница статьи';
         $view->article = $article;
-        $view->display(__DIR__ . '/../templates/article.php');
+        $view->display(__DIR__ . '/../templates/one.php');
     } else {
         header('Location: /App/templates/404notnews.php');
         exit(0);

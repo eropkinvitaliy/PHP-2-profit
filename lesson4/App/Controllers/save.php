@@ -22,7 +22,7 @@ if (!empty($post)) {
     $view = new View();
     $view->title = 'Страница статьи';
     $view->article = $article;
-    $view->display(__DIR__ . '/../templates/article.php');
+    $view->display(__DIR__ . '/../templates/one.php');
 } else {
     header('Location: /');
     exit(0);
