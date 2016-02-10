@@ -24,6 +24,19 @@ class Admin
         $this->view->news = \App\Models\News::findAll();
         $this->view->display(__DIR__ . '/../templates/index.php');
     }
+
+    protected function actionUpdate($id)
+    {
+
+    }
+
+    protected function actionSave()
+    {
+
+    }
+
+
+
     protected function actionOne()
     {
         $id = (int)$_GET['id'];
