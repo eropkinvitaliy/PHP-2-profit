@@ -9,7 +9,7 @@ if (!empty($id)) {
         $view = new View();
         $view->title = 'Страница редактирование статьи';
         $view->article = $article;
-        $view->display(__DIR__ . '/../templates/update.php');
+        $view->display(__DIR__ . '/../templates/form.php');
     } else {
         echo 'Запись с таким id отсутствует';
     }

@@ -31,22 +31,30 @@ class Admin
     {
         $id = (int)$_GET['id'] ?: false;
         if (empty($id)) {
-            header('Location: /');
+            $this->actionAll();
             exit(0);
         }
         if (!empty($this->view->article = NewsModel::findById($id))) {
             $this->view->title = 'Урок 4 Админка. Статья';
             $this->view->display(__DIR__ . '/../templates/admin/one.php');
         } else {
-            header('Location: /App/templates/404notnews.php');
+            $this->view->title = 'Урок 4. Статья не найдена';
+            $this->view->display(__DIR__ . '/../templates/errors/404notnews.php');
             exit(0);
         }
     }
 
     protected function actionCreate()
     {
-        $this->view->title = 'Страница редактирование статьи';
-        $this->view->display(__DIR__ . '/../templates/admin/update.php');
+        $post = $_POST;
+        if (!empty($post)) {
+            if (empty($post['id_news'])) {
+                $this->view->title = 'Страница добавления статьи';
+            } else {
+                $this->view->title = 'Страница редактирования статьи';
+            }
+        }
+        $this->view->display(__DIR__ . '/../templates/admin/form.php');
     }
 
     protected function actionSave()
@@ -88,7 +96,7 @@ class Admin
                 $view = new View();
                 $view->title = 'Страница редактирование статьи';
                 $view->article = $article;
-                $view->display(__DIR__ . '/../templates/update.php');
+                $view->display(__DIR__ . '/../templates/form.php');
             } else {
                 echo 'Запись с таким id отсутствует';
             }

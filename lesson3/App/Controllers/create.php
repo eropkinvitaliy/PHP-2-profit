@@ -6,4 +6,4 @@ require __DIR__ . '/../../autoload.php';
 
 $view = new View();
 $view->title = 'Страница редактирование статьи';
-$view->display(__DIR__ . '/../templates/update.php');
+$view->display(__DIR__ . '/../templates/form.php');
