@@ -14,7 +14,6 @@ trait TMagic
 
     public function __get($k)
     {
-        var_dump($k);
         return $this->data[$k];
     }
 
