@@ -4,9 +4,31 @@ require_once __DIR__ . '/autoload.php';
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $pathParts = array_reverse(explode('/', $path));
+//var_dump(empty($pathParts));
+//?><!--<pre>--><?php //var_dump($pathParts); die;?><!--</pre>--><?php
 
-$ctrl = !empty($pathParts[2]) ? ucfirst($pathParts[2]) : 'News';
-$act = !empty($pathParts[1]) ? ucfirst($pathParts[1]) : 'All';
+switch (count($pathParts)) {
+    case 2 :
+        $ctrl = !empty($pathParts[0]) ? ucfirst($pathParts[0]) : 'News';
+        $act = 'All';
+        break;
+    case 3 :
+        $ctrl = !empty($pathParts[1]) ? ucfirst($pathParts[1]) : 'News';
+        $act = !empty($pathParts[0]) ? ucfirst($pathParts[0]) : 'All';
+        break;
+    default:
+        $ctrl = !empty($pathParts[2]) ? ucfirst($pathParts[2]) : 'News';
+        $act = !empty($pathParts[1]) ? ucfirst($pathParts[1]) : 'All';
+        break;
+}
+
+//if (2 == coun($pathParts)) {
+//    $ctrl = !empty($pathParts[0]) ? ucfirst($pathParts[0]) : 'News';
+//    $act = 'All';
+//}else {
+//    $ctrl = !empty($pathParts[2]) ? ucfirst($pathParts[2]) : 'News';
+//    $act = !empty($pathParts[1]) ? ucfirst($pathParts[1]) : 'All';
+//}
 
 $controllerClassName = 'App\\Controllers\\' . $ctrl;
 $contr = new App\Controllers\News();

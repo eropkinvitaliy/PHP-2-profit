@@ -52,15 +52,18 @@ class News extends Model implements \Iterator
      * если не пустое, то возвращает объект класса Author
      *
      * @param $k string Имя свойства
-     * @return mixed  Если имя свойства не равно 'author'
+     * @return null  Если имя свойства не равно 'author'
      * @return object Authors, если имя свойства равно author
      */
     public function __get($k)
     {
-        if ('author' == $k && isset($this->author_id)) {
-            return Author::findById($this->author_id);
+        switch ($k) {
+            case 'author':
+                return Author::findById($this->author_id);
+                break;
+            default:
+                return null;
         }
-        return $this->data[$k];
     }
 
     /**
@@ -71,12 +74,19 @@ class News extends Model implements \Iterator
      */
     public function __isset($k)
     {
-        if ('author' == $k && isset($this->author_id)) {
-            return true;
+        switch ($k) {
+            case 'author':
+                return !empty($this->author_id);
+            break;
+            default:
+                return false;
         }
-        return isset($this->data[$k]);
     }
 
+    /**
+     * Тестовый метод для перебора свойств объекта этого класса
+     *
+     */
     public function getProperties()
     {
         foreach ($this as $key => $value) {
