@@ -8,7 +8,6 @@ use App\Models\News as NewsModel;
 
 class News extends Controller
 {
-
     /**
      * Метод вывода всех новостей
      *
@@ -28,7 +27,7 @@ class News extends Controller
     {
         $id = (int)$_GET['id'] ?: false;
         if (empty($id)) {
-            $this->actionAll();
+            header('Location: /admin/');
             exit(0);
         }
         if (!empty($this->view->article = NewsModel::findById($id))) {
