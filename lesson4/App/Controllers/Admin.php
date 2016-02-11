@@ -59,6 +59,7 @@ class Admin
             $this->view->display(__DIR__ . '/../templates/admin/one.php');
         } else {
             $this->view->title = 'Урок 4. Статья не найдена';
+            $this->view->erroradmin = true;
             $this->view->display(__DIR__ . '/../templates/errors/404notnews.php');
         }
     }
