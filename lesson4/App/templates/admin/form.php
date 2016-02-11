@@ -23,15 +23,14 @@
     <article style="margin: 10%">
         <section style="padding-right: 20%">
             <?php $pagetitle = !empty($article->id_news) ? 'Редактирование' : 'Добавление новости' ?>
-            <h1> <?php echo $pagetitle; ?> <i><?php echo $article->title; ?></i></h1>
+            <h1> <?php echo $pagetitle; ?> <i style="color: green"><?php echo $article->title; ?></i></h1>
 
             <form method="post" action="/admin/save/">
-                <p>Заголовок</p>
+                <h3>Заголовок</h3>
                 <input type="hidden" name="id_news" value="<?php echo $article->id_news; ?>">
                 <input type="text" name="title" value="<?php echo $article->title; ?>">
 
-                <p>Текст новости</p>
-
+                <h3>Текст новости</h3>
                 <p><textarea cols="100" rows="4" name="description"><?php echo $article->description; ?></textarea></p>
 
                 <button type="submit" style="background-color: green">Сохранить</button>

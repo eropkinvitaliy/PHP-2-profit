@@ -6,7 +6,7 @@ use App\Model;
 use App\Db;
 use App\TIterator;
 
-class News extends Model implements \Iterator
+class News extends Model
 {
     /**
      * Это модель класса для таблицы "Orders" .
@@ -18,8 +18,6 @@ class News extends Model implements \Iterator
      * @property integer $status
      * @property integer $author_id
      */
-
-    use TIterator;
 
     const TABLE = 'news';
     const PK = 'id_news';
@@ -92,5 +90,14 @@ class News extends Model implements \Iterator
         foreach ($this as $key => $value) {
             ?><pre><?php var_dump($key, $value);?></pre><?php
         }
+    }
+
+    public function beforeSave($post)
+    {
+        $this->title = trim($post['title']);
+        $this->description = trim($post['description']);
+        $this->published = date("Y-m-d H:i:s");
+        $this->status = self::ACTIV_PUBLISHED;
+        return $this;
     }
 }

@@ -22,7 +22,7 @@
 <div class="container">
     <h1>Этой новости нет</h1>
     <button class="btn btn-success btn-md" style="margin-bottom: 5px">
-        <a href="/index.php" style="text-decoration: none; color: white">    Вернуться на главную страницу</a>
+        <a href="/" style="text-decoration: none; color: white">    Вернуться на главную страницу</a>
     </button>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

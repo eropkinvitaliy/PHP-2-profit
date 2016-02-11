@@ -4,7 +4,7 @@ namespace App;
 
 use App\Db;
 
-abstract class Model implements \ArrayAccess, \Countable
+abstract class Model implements \Countable
 {
     const TABLE = '';
     const PK = '';

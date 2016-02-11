@@ -31,7 +31,7 @@ class Admin
     {
         $id = (int)$_GET['id'] ?: false;
         if (empty($id)) {
-            $this->actionAll();
+            header('Location: /admin/');
             exit(0);
         }
         if (!empty($this->view->article = NewsModel::findById($id))) {
@@ -40,86 +40,63 @@ class Admin
         } else {
             $this->view->title = 'Урок 4. Статья не найдена';
             $this->view->display(__DIR__ . '/../templates/errors/404notnews.php');
-            exit(0);
         }
     }
 
     protected function actionCreate()
     {
-        $post = $_POST;
-        if (!empty($post)) {
-            if (empty($post['id_news'])) {
-                $this->view->title = 'Страница добавления статьи';
+        $this->view->title = 'Страница добавления статьи';
+        $this->view->display(__DIR__ . '/../templates/admin/form.php');
+    }
+
+    protected function actionUpdate()
+    {
+        $id = (int)$_GET['id'] ?: false;
+        if (empty($id)) {
+            header('Location: /admin/');
+            exit(0);
+        }
+        if (!empty($id)) {
+            if (!empty($article = NewsModel::findById($id))) {
+                $this->view->title = 'Страница редактирование статьи';
+                $this->view->article = $article;
+                $this->view->display(__DIR__ . '/../templates/admin/form.php');
             } else {
-                $this->view->title = 'Страница редактирования статьи';
+                $this->view->title = 'Урок 4. Статья не найдена';
+                $this->view->display(__DIR__ . '/../templates/errors/404notnews.php');
             }
         }
-        $this->view->display(__DIR__ . '/../templates/admin/form.php');
     }
 
     protected function actionSave()
     {
         $post = $_POST;
-
-        if (!empty($post)) {
-            if (empty($post['id_news'])) {
-                $article = new News();
-            } else {
-                $article = News::findById($post['id_news']);
-            }
-            $article->title = trim($post['title']);
-            $article->description = trim($post['description']);
-            $article->published = date("Y-m-d H:i:s");
-            $article->status = STATUS_ACTIVE;
-            $article->author_id = 1;
-            $article->save();
-            $view = new View();
-            $view->title = 'Страница статьи';
-            $view->article = $article;
-            $view->display(__DIR__ . '/../templates/one.php');
-        } else {
-            header('Location: /');
+        if (empty($post)) {
+            header('Location: /admin/');
             exit(0);
         }
-    }
-
-    protected function actionInsert()
-    {
-
-    }
-
-    protected function actionUpdate($id)
-    {
-        $id = $_GET['id'] ?: false;
-        if (!empty($id)) {
-            if (!empty($article = News::findById($id))) {
-                $view = new View();
-                $view->title = 'Страница редактирование статьи';
-                $view->article = $article;
-                $view->display(__DIR__ . '/../templates/form.php');
-            } else {
-                echo 'Запись с таким id отсутствует';
-            }
+        if (empty($post['id_news'])) {
+            $article = new NewsModel();
         } else {
-            header('Location: /');
+            $article = NewsModel::findById($post['id_news']);
+        }
+        $article->author_id = 1;
+        $article->beforeSave($post)->save();
+        header('Location: /admin/one/?id=' . $article->id_news);
+    }
+
+    protected function actionDelete()
+    {
+        $id = (int)$_GET['id'] ?: false;
+        if (!empty($article = NewsModel::findById($id))) {
+            $article->delete();
+        } else {
+            $this->view->title = 'Урок 4. Статья не найдена';
+            $this->view->display(__DIR__ . '/../templates/errors/404notnews.php');
             exit(0);
         }
-    }
-
-    protected function actionDelete($id)
-    {
-        $id = $_GET['id'] ?: false;
-        if (!empty($id)) {
-            if (!empty($article = News::findById($id))) {
-                $article->delete();
-                header('Location: /index.php');
-            } else {
-                echo 'Запись с таким id отсутствует';
-            }
-        } else {
-            header('Location: /');
-            exit(0);
-        }
+        header('Location: /admin/');
+        exit(0);
     }
 
 
