@@ -2,36 +2,12 @@
 
 namespace App\Controllers;
 
+use App\Controller;
 use App\View;
 use App\Models\News as NewsModel;
 
-class Admin
+class Admin extends Controller
 {
-    /**
-     * Это контроллер админ-панели
-     *
-     * @var View Объект App/View
-     */
-
-    protected $view;
-
-    public function __construct()
-    {
-        $this->view = new View();
-    }
-
-    /**
-     * Метод для администрирование запуска экшенов этого класса
-     *
-     * @param $action string Название экшена
-     * @return string
-     */
-    public function action($action)
-    {
-        $methodName = 'action' . $action;
-        return $this->$methodName();
-    }
-
     /**
      * Метод вывода всех новостей
      *
