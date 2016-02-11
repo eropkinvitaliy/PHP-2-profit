@@ -92,6 +92,12 @@ class News extends Model
         }
     }
 
+    /**
+     * Метод присвивает пришедшие данные свойствам объекта
+     *
+     * @param $post array данные из $_POST
+     * @return $this  Возвращаем обект
+     */
     public function beforeSave($post)
     {
         $this->title = trim($post['title']);

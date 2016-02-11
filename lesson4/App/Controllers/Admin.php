@@ -7,6 +7,12 @@ use App\Models\News as NewsModel;
 
 class Admin
 {
+    /**
+     * Это контроллер админ-панели
+     *
+     * @var View Объект App/View
+     */
+
     protected $view;
 
     public function __construct()
@@ -14,12 +20,22 @@ class Admin
         $this->view = new View();
     }
 
+    /**
+     * Метод для администрирование запуска экшенов этого класса
+     *
+     * @param $action string Название экшена
+     * @return string
+     */
     public function action($action)
     {
         $methodName = 'action' . $action;
         return $this->$methodName();
     }
 
+    /**
+     * Метод вывода всех новостей
+     *
+     */
     protected function actionAll()
     {
         $this->view->title = 'Урок 4 Админка. Все новости';
@@ -27,6 +43,10 @@ class Admin
         $this->view->display(__DIR__ . '/../templates/admin/index.php');
     }
 
+    /**
+     * Метод вывода одной новости по её id
+     *
+     */
     protected function actionOne()
     {
         $id = (int)$_GET['id'] ?: false;
@@ -43,12 +63,20 @@ class Admin
         }
     }
 
+    /**
+     * Метод вывода формы для написания новой статьи
+     *
+     */
     protected function actionCreate()
     {
         $this->view->title = 'Страница добавления статьи';
         $this->view->display(__DIR__ . '/../templates/admin/form.php');
     }
 
+    /**
+     * Метод для вывода формы редактирования выбранной статьи по её id
+     *
+     */
     protected function actionUpdate()
     {
         $id = (int)$_GET['id'] ?: false;
@@ -68,6 +96,10 @@ class Admin
         }
     }
 
+    /**
+     * Метод сохранения новой статьи или после изменения её
+     *
+     */
     protected function actionSave()
     {
         $post = $_POST;
@@ -85,6 +117,10 @@ class Admin
         header('Location: /admin/one/?id=' . $article->id_news);
     }
 
+    /**
+     * Метод удаления статьи по её id
+     *
+     */
     protected function actionDelete()
     {
         $id = (int)$_GET['id'] ?: false;
@@ -98,6 +134,5 @@ class Admin
         header('Location: /admin/');
         exit(0);
     }
-
 
 }
