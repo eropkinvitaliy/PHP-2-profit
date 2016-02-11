@@ -27,7 +27,7 @@ class News extends Controller
     {
         $id = (int)$_GET['id'] ?: false;
         if (empty($id)) {
-            header('Location: /admin/');
+            header('Location: /');
             exit(0);
         }
         if (!empty($this->view->article = NewsModel::findById($id))) {
@@ -35,6 +35,7 @@ class News extends Controller
             $this->view->display(__DIR__ . '/../templates/news/one.php');
         } else {
             $this->view->title = 'Урок 4. Статья не найдена';
+            $this->view->erroradmin = false;
             $this->view->display(__DIR__ . '/../templates/errors/404notnews.php');
             exit(0);
         }
