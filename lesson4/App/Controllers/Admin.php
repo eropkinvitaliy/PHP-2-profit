@@ -68,13 +68,14 @@ class Admin extends Controller
                 $this->view->display(__DIR__ . '/../templates/admin/form.php');
             } else {
                 $this->view->title = 'Урок 4. Статья не найдена';
+                $this->view->erroradmin = true;
                 $this->view->display(__DIR__ . '/../templates/errors/404notnews.php');
             }
         }
     }
 
     /**
-     * Метод сохранения новой статьи или после изменения её
+     * Метод сохранения новой статьи или после внесения изменений в статью
      *
      */
     protected function actionSave()
@@ -105,6 +106,7 @@ class Admin extends Controller
             $article->delete();
         } else {
             $this->view->title = 'Урок 4. Статья не найдена';
+            $this->view->erroradmin = true;
             $this->view->display(__DIR__ . '/../templates/errors/404notnews.php');
             exit(0);
         }
