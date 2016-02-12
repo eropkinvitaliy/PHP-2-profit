@@ -21,5 +21,4 @@ switch (count($pathParts)) {
 }
 $controllerClassName = 'App\\Controllers\\' . $ctrl;
 $controller = new $controllerClassName;
-$method = 'action';
-$controller->$method($act);
+$controller->action($act);
