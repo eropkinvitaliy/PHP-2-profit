@@ -20,7 +20,6 @@ switch (count($pathParts)) {
         break;
 }
 $controllerClassName = 'App\\Controllers\\' . $ctrl;
-$contr = new App\Controllers\News();
 $controller = new $controllerClassName;
 $method = 'action';
 $controller->$method($act);
