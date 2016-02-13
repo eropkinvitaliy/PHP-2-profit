@@ -1,5 +1,5 @@
 <?php
-use App\Core\Dbase\DbException;
+use App\Core\MultiException;
 
 require_once __DIR__ . '/autoload.php';
 
@@ -27,6 +27,6 @@ try {
     $controllerClassName = 'App\\Controllers\\' . $ctrl;
     $controller = new $controllerClassName;
     $controller->action($act);
-} catch (DbException $e) {
-    echo 'Ошибка при работе с БД' . ' : ' . $e->getMessage();
+} catch (MultiException $e) {
+    $controller->actionError($e->getMessage());
 }

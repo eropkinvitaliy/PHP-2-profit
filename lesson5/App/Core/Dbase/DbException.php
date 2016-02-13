@@ -3,9 +3,9 @@
 namespace App\Core\Dbase;
 
 
-use App\Core\Exception;
+use App\Core\MultiException;
 
-class DbException extends Exception
+class DbException extends MultiException
 {
 
 }

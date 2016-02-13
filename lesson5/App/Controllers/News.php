@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Core\Orm\Controller;
+use App\Core\Mvc\Controller;
 use App\Models\News as NewsModel;
 
 class News extends Controller

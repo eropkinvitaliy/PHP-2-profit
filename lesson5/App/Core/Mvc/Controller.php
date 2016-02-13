@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Orm;
+namespace App\Core\Mvc;
 
 
 abstract class Controller
@@ -27,5 +27,11 @@ abstract class Controller
     {
         $methodName = 'action' . $action;
         return $this->$methodName();
+    }
+
+    public function actionError($error)
+    {
+        $this->view->error = $error;
+        $this->view->display(__DIR__ . '/../../templates/errors/error.php');
     }
 }

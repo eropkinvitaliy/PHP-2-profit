@@ -93,15 +93,17 @@ class News extends Model
     /**
      * Метод присвивает пришедшие данные свойствам объекта
      *
-     * @param $post array данные из $_POST
+     * @param $post array
      * @return $this  Возвращаем обект
      */
-    public function beforeSave($post)
+
+    public function fill($post)
     {
-        $this->title = trim($post['title']);
-        $this->description = trim($post['description']);
+        parent::fill($post);
         $this->published = date("Y-m-d H:i:s");
         $this->status = self::ACTIV_PUBLISHED;
+        $this->author_id = 1;
         return $this;
     }
+
 }

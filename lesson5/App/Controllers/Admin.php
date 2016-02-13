@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Core\Orm\Controller;
+use App\Core\Mvc\Controller;
 use App\Models\News as NewsModel;
 
 class Admin extends Controller
@@ -13,7 +13,6 @@ class Admin extends Controller
      */
     protected function actionAll()
     {
-        $this->view->title = 'Урок 5 Админка. Все новости';
         $this->view->news = NewsModel::findAll();
         $this->view->display(__DIR__ . '/../templates/admin/index.php');
     }
@@ -30,10 +29,8 @@ class Admin extends Controller
             exit(0);
         }
         if (!empty($this->view->article = NewsModel::findById($id))) {
-            $this->view->title = 'Урок 5 Админка. Статья';
             $this->view->display(__DIR__ . '/../templates/admin/one.php');
         } else {
-            $this->view->title = 'Урок 5. Статья не найдена';
             $this->view->erroradmin = true;
             $this->view->display(__DIR__ . '/../templates/errors/404notnews.php');
         }
@@ -45,7 +42,6 @@ class Admin extends Controller
      */
     protected function actionCreate()
     {
-        $this->view->title = 'Страница добавления статьи';
         $this->view->display(__DIR__ . '/../templates/admin/form.php');
     }
 
@@ -62,11 +58,9 @@ class Admin extends Controller
         }
         if (!empty($id)) {
             if (!empty($article = NewsModel::findById($id))) {
-                $this->view->title = 'Страница редактирование статьи';
                 $this->view->article = $article;
                 $this->view->display(__DIR__ . '/../templates/admin/form.php');
             } else {
-                $this->view->title = 'Урок 5. Статья не найдена';
                 $this->view->erroradmin = true;
                 $this->view->display(__DIR__ . '/../templates/errors/404notnews.php');
             }
@@ -89,8 +83,7 @@ class Admin extends Controller
         } else {
             $article = NewsModel::findById($post['id_news']);
         }
-        $article->author_id = 1;
-        $article->beforeSave($post)->save();
+        $article->fill($post)->save();
         header('Location: /admin/one/?id=' . $article->id_news);
     }
 
@@ -104,7 +97,6 @@ class Admin extends Controller
         if (!empty($article = NewsModel::findById($id))) {
             $article->delete();
         } else {
-            $this->view->title = 'Урок 5. Статья не найдена';
             $this->view->erroradmin = true;
             $this->view->display(__DIR__ . '/../templates/errors/404notnews.php');
             exit(0);
@@ -112,5 +104,4 @@ class Admin extends Controller
         header('Location: /admin/');
         exit(0);
     }
-
 }

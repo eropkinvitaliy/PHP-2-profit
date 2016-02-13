@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Core\Orm;
+namespace App\Core\Mvc;
 
-use App\Core\Mvc\TMagic;
 
 class View
     implements \Countable

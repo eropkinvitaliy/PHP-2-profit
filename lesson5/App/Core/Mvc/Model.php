@@ -9,29 +9,6 @@ abstract class Model implements \Countable
     const TABLE = '';
     const PK = '';
 
-    protected $data;
-
-    /**
-     * Метод конструктор для использования интерфейса ArrayAccess
-     * обрабатывает входящие данные при создании объекта(ов)
-     *
-     * @param array
-     */
-    public function __construct()
-    {
-        $argfunc = func_get_args();
-        $argcount = func_num_args();
-
-        if ($argcount == 0) {
-            $this->data = [];
-        }
-        if ($argcount == 1 && is_array($argfunc[0])) {
-            $this->data = $argfunc[0];
-        } else {
-            $this->data = $argfunc;
-        }
-    }
-
     /**
      * Метод проверяет, новая запись или нет
      *
@@ -50,6 +27,23 @@ abstract class Model implements \Countable
     public function getPk()
     {
         return $this->{static::PK};
+    }
+
+    /**
+     * Метод заполняет данными свойства модели
+     *
+     * @param $post array
+     */
+    public function fill($data)
+    {
+        $keys = array_keys($data);
+        foreach ($keys as $attribute) {
+            if (static::PK == $attribute) {
+                continue;
+            }
+            $this->{$attribute} = $data[$attribute];
+        }
+        return $this;
     }
 
     /**
@@ -172,52 +166,6 @@ abstract class Model implements \Countable
         return true;
     }
 
-    /**
-     * Метод реализующий интерфейс ArrayAccess
-     *
-     * @param string $key
-     * @return bool
-     */
-    public function offsetExists($key)
-    {
-        return isset($this->data[$key]);
-    }
-
-    /**
-     * Метод реализующий интерфейс ArrayAccess
-     *
-     * @param string $key
-     * @return array или NULL
-     */
-    public function offsetGet($key)
-    {
-        return $this->offsetExists($key) ? $this->data[$key] : null;
-    }
-
-    /**
-     * Метод реализующий интерфейс ArrayAccess
-     *
-     * @param string $key
-     * @param mixed $value
-     */
-    public function offsetSet($key, $value)
-    {
-        if (is_null($key)) {
-            $this->data[] = $value;
-        } else {
-            $this->data[$key] = $value;
-        }
-    }
-
-    /**
-     * Метод реализующий интерфейс ArrayAccess
-     *
-     * @param string $key
-     */
-    public function offsetUnset($key)
-    {
-        unset($this->data[$key]);
-    }
 
     /**
      * Метод реализующий интерфейс Countable
