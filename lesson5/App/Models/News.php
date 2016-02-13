@@ -80,17 +80,6 @@ class News extends Model
     }
 
     /**
-     * Тестовый метод для перебора свойств объекта этого класса
-     *
-     */
-    public function getProperties()
-    {
-        foreach ($this as $key => $value) {
-            ?><pre><?php var_dump($key, $value);?></pre><?php
-        }
-    }
-
-    /**
      * Метод присвивает пришедшие данные свойствам объекта
      *
      * @param $post array
@@ -105,5 +94,18 @@ class News extends Model
         $this->author_id = 1;
         return $this;
     }
+
+    /**
+     * Тестовый метод для перебора свойств объекта этого класса
+     *
+     */
+    public function getProperties()
+    {
+        foreach ($this as $key => $value) {
+            ?><pre><?php var_dump($key, $value);?></pre><?php
+        }
+    }
+
+
 
 }

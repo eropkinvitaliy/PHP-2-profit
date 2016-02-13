@@ -25,8 +25,7 @@ class Admin extends Controller
     {
         $id = (int)$_GET['id'] ?: false;
         if (empty($id)) {
-            header('Location: /admin/');
-            exit(0);
+            $this->redirect('/admin/');
         }
         if (!empty($this->view->article = NewsModel::findById($id))) {
             $this->view->display(__DIR__ . '/../templates/admin/one.php');
@@ -53,8 +52,7 @@ class Admin extends Controller
     {
         $id = (int)$_GET['id'] ?: false;
         if (empty($id)) {
-            header('Location: /admin/');
-            exit(0);
+            $this->redirect('/admin/');
         }
         if (!empty($id)) {
             if (!empty($article = NewsModel::findById($id))) {
@@ -75,8 +73,7 @@ class Admin extends Controller
     {
         $post = $_POST;
         if (empty($post)) {
-            header('Location: /admin/');
-            exit(0);
+            $this->redirect('/admin/');
         }
         if (empty($post['id_news'])) {
             $article = new NewsModel();
@@ -84,7 +81,7 @@ class Admin extends Controller
             $article = NewsModel::findById($post['id_news']);
         }
         $article->fill($post)->save();
-        header('Location: /admin/one/?id=' . $article->id_news);
+        $this->redirect('/admin/one/?id=' . $article->id_news);
     }
 
     /**
@@ -99,9 +96,7 @@ class Admin extends Controller
         } else {
             $this->view->erroradmin = true;
             $this->view->display(__DIR__ . '/../templates/errors/404notnews.php');
-            exit(0);
         }
-        header('Location: /admin/');
-        exit(0);
+        $this->redirect('/admin/');
     }
 }

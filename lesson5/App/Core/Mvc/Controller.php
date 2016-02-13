@@ -34,4 +34,10 @@ abstract class Controller
         $this->view->error = $error;
         $this->view->display(__DIR__ . '/../../templates/errors/error.php');
     }
+
+    public function redirect($url, $code = 301)
+    {
+        header("location: " . $url, true, $code);
+        exit;
+    }
 }
