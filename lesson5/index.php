@@ -1,4 +1,5 @@
 <?php
+use App\Core\Dbase\DbException;
 
 require_once __DIR__ . '/autoload.php';
 
@@ -22,6 +23,10 @@ switch (count($pathParts)) {
         $act = !empty($pathParts[1]) ? ucfirst($pathParts[1]) : DEFAULT_ACTION;
         break;
 }
-$controllerClassName = 'App\\Controllers\\' . $ctrl;
-$controller = new $controllerClassName;
-$controller->action($act);
+try {
+    $controllerClassName = 'App\\Controllers\\' . $ctrl;
+    $controller = new $controllerClassName;
+    $controller->action($act);
+} catch (DbException $e) {
+    echo 'Ошибка при работе с БД' . ' : ' . $e->getMessage();
+}

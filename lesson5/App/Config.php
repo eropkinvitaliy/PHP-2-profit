@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Config;
+namespace App;
 
 use App\Core\Mvc\TSinglton;
 

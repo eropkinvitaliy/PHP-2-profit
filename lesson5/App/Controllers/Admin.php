@@ -13,7 +13,7 @@ class Admin extends Controller
      */
     protected function actionAll()
     {
-        $this->view->title = 'Урок 4 Админка. Все новости';
+        $this->view->title = 'Урок 5 Админка. Все новости';
         $this->view->news = NewsModel::findAll();
         $this->view->display(__DIR__ . '/../templates/admin/index.php');
     }
@@ -30,10 +30,10 @@ class Admin extends Controller
             exit(0);
         }
         if (!empty($this->view->article = NewsModel::findById($id))) {
-            $this->view->title = 'Урок 4 Админка. Статья';
+            $this->view->title = 'Урок 5 Админка. Статья';
             $this->view->display(__DIR__ . '/../templates/admin/one.php');
         } else {
-            $this->view->title = 'Урок 4. Статья не найдена';
+            $this->view->title = 'Урок 5. Статья не найдена';
             $this->view->erroradmin = true;
             $this->view->display(__DIR__ . '/../templates/errors/404notnews.php');
         }
@@ -66,7 +66,7 @@ class Admin extends Controller
                 $this->view->article = $article;
                 $this->view->display(__DIR__ . '/../templates/admin/form.php');
             } else {
-                $this->view->title = 'Урок 4. Статья не найдена';
+                $this->view->title = 'Урок 5. Статья не найдена';
                 $this->view->erroradmin = true;
                 $this->view->display(__DIR__ . '/../templates/errors/404notnews.php');
             }
@@ -104,7 +104,7 @@ class Admin extends Controller
         if (!empty($article = NewsModel::findById($id))) {
             $article->delete();
         } else {
-            $this->view->title = 'Урок 4. Статья не найдена';
+            $this->view->title = 'Урок 5. Статья не найдена';
             $this->view->erroradmin = true;
             $this->view->display(__DIR__ . '/../templates/errors/404notnews.php');
             exit(0);
