@@ -27,15 +27,12 @@ switch (count($pathParts)) {
 try {
     $controllerClassName = 'App\\Controllers\\' . $ctrl;
     $controller = new $controllerClassName;
+    if (!method_exists($controller, 'action' . $act)) {
+        throw new Exception404('404');
+    }
 }
 catch (Exception404 $e) {
-    $controllerClassName = 'App\\Controllers\\' . DEFAULT_CONTROLLER;
-    $controller = new $controllerClassName;
-    $controller->redirect('/');
+    $controller->action('error', $e->getMessage());
+    exit(0);
 }
-try {
-    $controller->action($act);
-}
-catch (MultiException $e) {
-    $controller->action('Error', $e->getMessage());
-}
+$controller->action($act);
