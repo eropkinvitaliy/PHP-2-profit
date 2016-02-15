@@ -23,10 +23,10 @@ abstract class Controller
      * @param $action string Название экшена
      * @return string
      */
-    public function action($action)
+    public function action($action, $params = '')
     {
         $methodName = 'action' . $action;
-        return $this->$methodName();
+        return $this->$methodName($params);
     }
 
     public function actionError($error)

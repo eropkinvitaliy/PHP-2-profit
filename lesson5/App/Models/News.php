@@ -86,7 +86,7 @@ class News extends Model
      * @return $this  Возвращаем обект
      */
 
-    public function fill($post)
+    public function fill(array $post)
     {
         parent::fill($post);
         $this->published = date("Y-m-d H:i:s");

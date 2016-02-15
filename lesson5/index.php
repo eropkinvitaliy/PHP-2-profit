@@ -1,5 +1,6 @@
 <?php
 use App\Core\MultiException;
+use App\Core\Mvc\Exception404;
 
 require_once __DIR__ . '/autoload.php';
 
@@ -26,7 +27,15 @@ switch (count($pathParts)) {
 try {
     $controllerClassName = 'App\\Controllers\\' . $ctrl;
     $controller = new $controllerClassName;
+}
+catch (Exception404 $e) {
+    $controllerClassName = 'App\\Controllers\\' . DEFAULT_CONTROLLER;
+    $controller = new $controllerClassName;
+    $controller->redirect('/');
+}
+try {
     $controller->action($act);
-} catch (MultiException $e) {
-    $controller->actionError($e->getMessage());
+}
+catch (MultiException $e) {
+    $controller->action('Error', $e->getMessage());
 }

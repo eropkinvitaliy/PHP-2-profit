@@ -34,7 +34,7 @@ abstract class Model implements \Countable
      *
      * @param $post array
      */
-    public function fill($data)
+    public function fill(array $data)
     {
         $keys = array_keys($data);
         foreach ($keys as $attribute) {
