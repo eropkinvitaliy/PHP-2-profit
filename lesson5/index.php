@@ -42,6 +42,6 @@ try {
 }
 catch (Exception $e) {
     $controller->action('errors', $e);
-    Logging::toFile($e);
+    //Logging::toFile($e);
     exit(0);
 }

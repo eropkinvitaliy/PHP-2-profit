@@ -4,6 +4,7 @@ namespace App\Core\Mvc;
 
 use App\Core\Dbase\Db;
 use App\Core\MultiException;
+use App\Core\Mvc\Rules;
 
 abstract class Model implements \Countable
 {
@@ -30,38 +31,22 @@ abstract class Model implements \Countable
         return $this->{static::PK};
     }
 
-//    public function validate()
-//    {
-//        $e = new MultiException();
-//        foreach ($this->rule() as $rule) {
-//            foreach ($rule[1] as $filter) {
-//                switch ($filter) {
-//                    case 'required':
-//                        if (empty($this->{$rule[0]})) {
-//                            $e[] = new \Exception('Не заполнено поле : ' . $rule[0]);
-//                        }
-//                        break;
-//                    case 'trim':
-//                        $this->{$rule[0]} = trim($this->{$rule[0]});
-//                        break;
-//                    default:
-//                        break;
-//                }
-//            }
-//        }
-//        throw $e;
-//    }
-
-
+    /**
+     * Метод проверяет соответствие значений свойств объекта
+     *правилам
+     *
+     * @throws MultiException
+     * @throws array
+     */
     public function validate()
     {
         $e = new MultiException();
         $rules = Rules::filters();
-        foreach ($this->conditions() as $params) {
-            foreach ($params[1] as $filter) {
+        foreach ($this->conditions() as $condition) {
+            foreach ($condition[1] as $filter) {
                 $fun = $rules[$filter];
-                if (false == $fun($this->{$params[0]})) {
-                    $e[] = new \Exception('Ошибка заполнения свойства : ' . $this->$params[0]);
+                if (false == $fun($this->{$condition[0]})) {
+                    $e[] = new \Exception('Ошибка валидации свойства: ' . $condition[0] . ';  фильтр: ' . $filter);
                 };
             }
         }

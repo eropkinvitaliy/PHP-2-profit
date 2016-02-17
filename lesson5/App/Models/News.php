@@ -32,16 +32,12 @@ class News extends Model
 
     protected $data = [];
 
-    public function rule()
-    {
-        return [
-            ['title', ['required', 'trim']],
-            ['description', ['required', 'trim']],
-            ['published', ['required']],
-            ['status', ['required']],
-        ];
-    }
-
+    /**
+     * Метод, в котором перечислены свойства класса и
+     * условия при их сохранении
+     *
+     * @return array
+     */
     public function conditions()
     {
         return [
@@ -113,7 +109,7 @@ class News extends Model
         $this->published = date("Y-m-d H:i:s");
         $this->status = self::ACTIV_PUBLISHED;
         $this->author_id = 1;
-        $this->validates();
+        $this->validate();
         return $this;
     }
 }

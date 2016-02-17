@@ -13,7 +13,8 @@ class Rules
                 return strlen(trim($v)) > 0 ? true : false;
             },
             'trim' => function ($v) {
-                return trim($v);
+                trim($v);
+                return true;
             },
         ];
     }
