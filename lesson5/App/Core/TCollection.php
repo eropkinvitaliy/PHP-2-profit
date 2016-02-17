@@ -15,7 +15,7 @@ trait TCollection
      */
     public function offsetExists($key)
     {
-        return array_key_exist($key, $this->data[$key]);
+        return array_key_exists($key, $this->data[$key]);
     }
 
     /**

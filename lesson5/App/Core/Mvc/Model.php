@@ -50,7 +50,11 @@ abstract class Model implements \Countable
                 };
             }
         }
-        throw $e;
+        if (!empty($e[0])) {
+            throw $e;
+            return false;
+        }
+        return true;
     }
 
     /**

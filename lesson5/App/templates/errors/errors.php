@@ -14,6 +14,7 @@
                   aria-hidden="true"></span><?php echo ' ' . $errors->getMessage(); ?>
         <?php endif ?>
     </div>
+   <p> <a href="/admin/">Вернуться на главную страницу</a></p>
 </div>
 
 <?php include_once __DIR__ . '/../Layouts/footer.php'; ?>
