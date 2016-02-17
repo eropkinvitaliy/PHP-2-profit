@@ -3,6 +3,7 @@
 namespace App\Core\Mvc;
 
 use App\Core\Dbase\Db;
+use App\Core\MultiException;
 
 abstract class Model implements \Countable
 {
@@ -27,6 +28,44 @@ abstract class Model implements \Countable
     public function getPk()
     {
         return $this->{static::PK};
+    }
+
+//    public function validate()
+//    {
+//        $e = new MultiException();
+//        foreach ($this->rule() as $rule) {
+//            foreach ($rule[1] as $filter) {
+//                switch ($filter) {
+//                    case 'required':
+//                        if (empty($this->{$rule[0]})) {
+//                            $e[] = new \Exception('Не заполнено поле : ' . $rule[0]);
+//                        }
+//                        break;
+//                    case 'trim':
+//                        $this->{$rule[0]} = trim($this->{$rule[0]});
+//                        break;
+//                    default:
+//                        break;
+//                }
+//            }
+//        }
+//        throw $e;
+//    }
+
+
+    public function validate()
+    {
+        $e = new MultiException();
+        $rules = Rules::filters();
+        foreach ($this->conditions() as $params) {
+            foreach ($params[1] as $filter) {
+                $fun = $rules[$filter];
+                if (false == $fun($this->{$params[0]})) {
+                    $e[] = new \Exception('Ошибка заполнения свойства : ' . $this->$params[0]);
+                };
+            }
+        }
+        throw $e;
     }
 
     /**

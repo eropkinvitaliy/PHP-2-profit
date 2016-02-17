@@ -29,10 +29,16 @@ abstract class Controller
         return $this->$methodName($params);
     }
 
-    public function actionError($error)
+    public function actionErrors($errors)
+    {
+        $this->view->errors = $errors;
+        $this->view->display(__DIR__ . '/../../templates/errors/errors.php');
+    }
+
+    public function actionError404($error)
     {
         $this->view->error = $error;
-        $this->view->display(__DIR__ . '/../../templates/errors/error.php');
+        $this->view->display(__DIR__ . '/../../templates/errors/error404.php');
     }
 
     public function redirect($url, $code = 301)

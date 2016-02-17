@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Core\MultiException;
 use App\Core\Mvc\Model;
 
 class News extends Model
@@ -30,6 +31,26 @@ class News extends Model
     public $author_id;
 
     protected $data = [];
+
+    public function rule()
+    {
+        return [
+            ['title', ['required', 'trim']],
+            ['description', ['required', 'trim']],
+            ['published', ['required']],
+            ['status', ['required']],
+        ];
+    }
+
+    public function conditions()
+    {
+        return [
+            ['title', ['required', 'trim']],
+            ['description', ['required', 'trim']],
+            ['published', ['required']],
+            ['status', ['required']],
+        ];
+    }
 
     /**
      * Это магический метод __set
@@ -73,7 +94,7 @@ class News extends Model
         switch ($k) {
             case 'author':
                 return !empty($this->author_id);
-            break;
+                break;
             default:
                 return false;
         }
@@ -92,20 +113,7 @@ class News extends Model
         $this->published = date("Y-m-d H:i:s");
         $this->status = self::ACTIV_PUBLISHED;
         $this->author_id = 1;
+        $this->validates();
         return $this;
     }
-
-    /**
-     * Тестовый метод для перебора свойств объекта этого класса
-     *
-     */
-    public function getProperties()
-    {
-        foreach ($this as $key => $value) {
-            ?><pre><?php var_dump($key, $value);?></pre><?php
-        }
-    }
-
-
-
 }
