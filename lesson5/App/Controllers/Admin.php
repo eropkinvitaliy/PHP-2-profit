@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Mvc\Controller;
 use App\Models\News as NewsModel;
+use App\Core\Mvc\Exception404;
 
 class Admin extends Controller
 {
@@ -31,7 +32,7 @@ class Admin extends Controller
             $this->view->display(__DIR__ . '/../templates/admin/one.php');
         } else {
             $this->view->erroradmin = true;
-            $this->view->display(__DIR__ . '/../templates/errors/404notnews.php');
+            throw new Exception404('Страница с такой новостью не найдена');
         }
     }
 
@@ -60,7 +61,7 @@ class Admin extends Controller
                 $this->view->display(__DIR__ . '/../templates/admin/form.php');
             } else {
                 $this->view->erroradmin = true;
-                $this->view->display(__DIR__ . '/../templates/errors/404notnews.php');
+                throw new Exception404('Страница с такой новостью не найдена');
             }
         }
     }
@@ -95,7 +96,7 @@ class Admin extends Controller
             $article->delete();
         } else {
             $this->view->erroradmin = true;
-            $this->view->display(__DIR__ . '/../templates/errors/404notnews.php');
+            throw new Exception404('Страница с такой новостью не найдена');
         }
         $this->redirect('/admin/');
     }

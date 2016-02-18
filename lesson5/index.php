@@ -40,6 +40,11 @@ catch (Exception404 $e) {
 try {
     $controller->action($act);
 }
+catch (Exception404 $e) {
+    Logging::toFile($e);
+    $controller->action('error404', $e->getMessage());
+    exit(0);
+}
 catch (Exception $e) {
     $controller->action('errors', $e);
     exit(0);

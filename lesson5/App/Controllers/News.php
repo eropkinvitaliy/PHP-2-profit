@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Mvc\Controller;
+use App\Core\Mvc\Exception404;
 use App\Models\News as NewsModel;
 
 class News extends Controller
@@ -31,7 +32,7 @@ class News extends Controller
             $this->view->display(__DIR__ . '/../templates/news/one.php');
         } else {
             $this->view->erroradmin = false;
-            $this->view->display(__DIR__ . '/../templates/errors/404notnews.php');
+            throw new Exception404('Страница с такой новостью не найдена');
         }
     }
 }

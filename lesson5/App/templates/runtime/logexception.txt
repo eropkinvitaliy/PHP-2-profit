@@ -1,0 +1,4 @@
+18-02-2016 13:02:25  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\Admin.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+18-02-2016 13:02:39  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\Admin.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+18-02-2016 13:02:40  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\Admin.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+18-02-2016 13:02:55  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\Admin.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
