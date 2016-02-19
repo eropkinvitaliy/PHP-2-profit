@@ -1,5 +1,5 @@
 <?php
-use App\Core\MultiException;
+use App\Controllers\Error;
 use App\Core\Mvc\Exception404;
 use App\Core\Runtime\Logging;
 
@@ -34,7 +34,8 @@ try {
 }
 catch (Exception404 $e) {
     Logging::toFile($e);
-    $controller->action('error404', $e->getMessage());
+    $controller404 = new Error();
+    $controller404->action('error404', $e->getMessage());
     exit(0);
 }
 try {
@@ -42,10 +43,12 @@ try {
 }
 catch (Exception404 $e) {
     Logging::toFile($e);
-    $controller->action('error404', $e->getMessage());
+    $controller404 = new Error();
+    $controller404->action('error404', $e->getMessage());
     exit(0);
 }
 catch (Exception $e) {
-    $controller->action('errors', $e);
+    $controllerErr = new Error();
+    $controllerErr->action('error', $e);
     exit(0);
 }

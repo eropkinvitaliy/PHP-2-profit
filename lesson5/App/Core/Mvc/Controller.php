@@ -29,18 +29,12 @@ abstract class Controller
         return $this->$methodName($params);
     }
 
-    public function actionErrors($errors)
-    {
-        $this->view->errors = $errors;
-        $this->view->display(__DIR__ . '/../../templates/errors/errors.php');
-    }
-
-    public function actionError404($error)
-    {
-        $this->view->error = $error;
-        $this->view->display(__DIR__ . '/../../templates/errors/error404.php');
-    }
-
+    /**
+     * Метод перехода по указанному адресу
+     *
+     * @param $url
+     * @param int $code
+     */
     public function redirect($url, $code = 301)
     {
         header("location: " . $url, true, $code);
