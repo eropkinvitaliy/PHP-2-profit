@@ -5,7 +5,7 @@ $id = $_GET['id'] ?: false;
 if (!empty($id)) {
     if (!empty($article = News::findById($id))) {
         $article->delete();
-        header('Location: /index.php');
+        header('Location: /index.html');
     } else {
         echo 'Запись с таким id отсутствует';
     }

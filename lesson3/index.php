@@ -29,4 +29,4 @@ $view->news = News::findLastRecords(3);
 // Вывод колличества объектов с использованием интефейса Countable
 //echo count($view); die;
 
-$view->display(__DIR__ . '/App/templates/index.php');
+$view->display(__DIR__ . '/App/templates/index.html');

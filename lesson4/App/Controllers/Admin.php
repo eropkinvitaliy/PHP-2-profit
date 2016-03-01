@@ -16,7 +16,7 @@ class Admin extends Controller
     {
         $this->view->title = 'Урок 4 Админка. Все новости';
         $this->view->news = NewsModel::findAll();
-        $this->view->display(__DIR__ . '/../templates/admin/index.php');
+        $this->view->display(__DIR__ . '/../templates/admin/index.html');
     }
 
     /**
@@ -32,7 +32,7 @@ class Admin extends Controller
         }
         if (!empty($this->view->article = NewsModel::findById($id))) {
             $this->view->title = 'Урок 4 Админка. Статья';
-            $this->view->display(__DIR__ . '/../templates/admin/one.php');
+            $this->view->display(__DIR__ . '/../templates/admin/one.html');
         } else {
             $this->view->title = 'Урок 4. Статья не найдена';
             $this->view->erroradmin = true;

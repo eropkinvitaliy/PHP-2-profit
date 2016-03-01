@@ -16,7 +16,7 @@ class News extends Controller
     {
         $this->view->title = 'Урок 4 - Новости';
         $this->view->news = NewsModel::findAll();
-        $this->view->display(__DIR__ . '/../templates/news/index.php');
+        $this->view->display(__DIR__ . '/../templates/news/index.html');
     }
 
     /**
@@ -32,7 +32,7 @@ class News extends Controller
         }
         if (!empty($this->view->article = NewsModel::findById($id))) {
             $this->view->title = 'Урок 4 Новости. Статья';
-            $this->view->display(__DIR__ . '/../templates/news/one.php');
+            $this->view->display(__DIR__ . '/../templates/news/one.html');
         } else {
             $this->view->title = 'Урок 4. Статья не найдена';
             $this->view->erroradmin = false;

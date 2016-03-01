@@ -15,7 +15,7 @@ class News extends Controller
     protected function actionAll()
     {
         $this->view->news = NewsModel::findAll();
-        $this->view->display(__DIR__ . '/../templates/news/index.php');
+        $this->view->display(__DIR__ . '/../templates/news/index.html');
     }
 
     /**
@@ -29,7 +29,7 @@ class News extends Controller
             $this->redirect('/');
         }
         if (!empty($this->view->article = NewsModel::findById($id))) {
-            $this->view->display(__DIR__ . '/../templates/news/one.php');
+            $this->view->display(__DIR__ . '/../templates/news/one.html');
         } else {
             $this->view->erroradmin = false;
             throw new Exception404('Страница с такой новостью не найдена');

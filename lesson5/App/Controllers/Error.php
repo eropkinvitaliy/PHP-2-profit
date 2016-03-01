@@ -10,12 +10,12 @@ class Error extends Controller
     public function actionError404($error)
     {
         $this->view->error = $error;
-        $this->view->display(__DIR__ . '/../templates/errors/error404.php');
+        $this->view->display(__DIR__ . '/../templates/errors/error404.html');
     }
 
     public function actionError($errors)
     {
         $this->view->errors = $errors;
-        $this->view->display(__DIR__ . '/../templates/errors/errors.php');
+        $this->view->display(__DIR__ . '/../templates/errors/errors.html');
     }
 }

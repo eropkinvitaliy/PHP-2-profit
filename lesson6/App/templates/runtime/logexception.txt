@@ -1,0 +1,44 @@
+18-02-2016 13:02:25  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\Admin.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+18-02-2016 13:02:39  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\Admin.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+18-02-2016 13:02:40  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\Admin.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+18-02-2016 13:02:55  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\Admin.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+18-02-2016 13:02:22  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 08:02:14  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:45  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:46  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:49  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:51  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:21  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:22  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:23  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:23  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:56  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:57  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:17  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:18  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:19  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:19  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:19  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:19  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:54  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:55  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:07  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:04  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:05  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:05  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:06  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:50  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:51  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:27  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\News.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:36  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\App\Controllers\Admin.php  в строке: 35 код ошибки:  0  Страница с такой новостью не найдена
+19-02-2016 11:02:42  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson5\index.php  в строке: 32 код ошибки:  0  Страница не найдена. Ошибка 404
+01-03-2016 22:03:06  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson6\App\Controllers\News.php  в строке: 40 код ошибки:  0  Страница с такой новостью не найдена
+01-03-2016 22:03:02  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson6\App\Controllers\News.php  в строке: 40 код ошибки:  0  Страница с такой новостью не найдена
+01-03-2016 22:03:23  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson6\index.php  в строке: 32 код ошибки:  0  Страница не найдена. Ошибка 404
+01-03-2016 22:03:25  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson6\index.php  в строке: 32 код ошибки:  0  Страница не найдена. Ошибка 404
+01-03-2016 22:03:27  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson6\index.php  в строке: 32 код ошибки:  0  Страница не найдена. Ошибка 404
+01-03-2016 22:03:17  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson6\index.php  в строке: 32 код ошибки:  0  Страница не найдена. Ошибка 404
+01-03-2016 22:03:18  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson6\index.php  в строке: 32 код ошибки:  0  Страница не найдена. Ошибка 404
+01-03-2016 22:03:19  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson6\index.php  в строке: 32 код ошибки:  0  Страница не найдена. Ошибка 404
+01-03-2016 22:03:20  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson6\index.php  в строке: 32 код ошибки:  0  Страница не найдена. Ошибка 404
+01-03-2016 22:03:21  D:\OpenServerNew\OpenServer\domains\PHP-2-profit\lesson6\index.php  в строке: 32 код ошибки:  0  Страница не найдена. Ошибка 404
