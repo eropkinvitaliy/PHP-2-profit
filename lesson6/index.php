@@ -39,7 +39,7 @@ try {
     exit(0);
 } catch (Exception $e) {
     if ($e instanceof \App\Core\Dbase\DbException) {
-        \App\Core\Mail\SenderMail::send();
+        \App\Core\Mail\SendMail::send('ldi@prokma.ru', 'Ошибка подключения к БД', $e->getMessage());
     }
     $controllerErr = new Error();
     $controllerErr->action('error', $e);
