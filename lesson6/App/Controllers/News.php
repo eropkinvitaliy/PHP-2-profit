@@ -17,7 +17,8 @@ class News extends Controller
     {
         $news = NewsModel::findAll();
         $this->view->render('/news/index.html', [
-            'news' => $news
+            'news' => $news,
+            'resource' => \PHP_Timer::resourceUsage()
         ]);
     }
 
@@ -33,7 +34,8 @@ class News extends Controller
         }
         if (!empty($article = NewsModel::findById($id))) {
             $this->view->render('/news/one.html', [
-                'article' => $article
+                'article' => $article,
+                'resource' => \PHP_Timer::resourceUsage()
             ]);
         } else {
             $this->view->erroradmin = false;
