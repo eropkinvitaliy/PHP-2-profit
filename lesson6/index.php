@@ -37,16 +37,7 @@ try {
     $controller404 = new Error();
     $controller404->action('error404', $e->getMessage());
     exit(0);
-}
-//try {
-
-//} catch (Exception404 $e) {
-//    Logging::toFile($e);
-//    $controller404 = new Error();
-//    $controller404->action('error404', $e->getMessage());
-//    exit(0);
-//}
-catch (Exception $e) {
+} catch (Exception $e) {
     $controllerErr = new Error();
     $controllerErr->action('error', $e);
     exit(0);

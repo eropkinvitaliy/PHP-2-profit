@@ -24,7 +24,7 @@ class View implements \Countable
     }
 
     /**
-     * Метод выводит на экран заданный шаблон
+     * Метод выводит на экран шаблон страницы
      * @param $template string Путь к шаблону
      * @param $data array Данные для шаблона
      */

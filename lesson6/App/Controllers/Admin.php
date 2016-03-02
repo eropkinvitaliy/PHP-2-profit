@@ -15,8 +15,10 @@ class Admin extends Controller
      */
     protected function actionAll()
     {
-        $this->view->news = NewsModel::findAll();
-        $this->view->display(__DIR__ . '/../templates/admin/index.php');
+        $news = NewsModel::findAll();
+        $this->view->render('/admin/all.html', [
+            'news' => $news
+        ]);
     }
 
     /**
@@ -29,8 +31,10 @@ class Admin extends Controller
         if (empty($id)) {
             $this->redirect('/admin/');
         }
-        if (!empty($this->view->article = NewsModel::findById($id))) {
-            $this->view->display(__DIR__ . '/../templates/admin/one.php');
+        if (!empty($article = NewsModel::findById($id))) {
+            $this->view->render('/admin/one.html', [
+                'article' => $article
+            ]);
         } else {
             $this->view->erroradmin = true;
             throw new Exception404('Страница с такой новостью не найдена');
@@ -43,7 +47,7 @@ class Admin extends Controller
      */
     protected function actionCreate()
     {
-        $this->view->display(__DIR__ . '/../templates/admin/form.php');
+        $this->view->render('/admin/form.html');
     }
 
     /**
@@ -58,8 +62,11 @@ class Admin extends Controller
         }
         if (!empty($id)) {
             if (!empty($article = NewsModel::findById($id))) {
-                $this->view->article = $article;
-                $this->view->display(__DIR__ . '/../templates/admin/form.php');
+                //$this->view->article = $article;
+                $this->view->render('/admin/form.html', [
+                    'article' => $article,
+                    'id' => $id
+                ]);
             } else {
                 $this->view->erroradmin = true;
                 throw new Exception404('Страница с такой новостью не найдена');

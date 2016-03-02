@@ -16,7 +16,6 @@ class Error extends Controller
 
     public function actionError($errors)
     {
-        var_dump($errors);
         $this->view->render('/errors/errors.html', [
             'errors' => $errors
         ]);
