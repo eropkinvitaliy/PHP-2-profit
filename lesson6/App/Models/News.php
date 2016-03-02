@@ -72,6 +72,7 @@ class News extends Model
                 break;
             default:
                 return null;
+                break;
         }
     }
 
