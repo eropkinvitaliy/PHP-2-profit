@@ -16,8 +16,8 @@ class View implements \Countable
     public function __construct()
     {
         try {
-        $loader = new \Twig_Loader_Filesystem(__DIR__ . '/../../templates');
-        $this->twig = new \Twig_Environment($loader);
+            $loader = new \Twig_Loader_Filesystem(__DIR__ . '/../../templates');
+            $this->twig = new \Twig_Environment($loader);
         } catch (\Twig_Error $e) {
             throw new \Exception('Не удалось подключить шаблон ' . '<br>' . $e->getMessage());
         }
