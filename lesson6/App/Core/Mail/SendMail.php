@@ -7,14 +7,14 @@ class SendMail
 
     public static function send($to, $title, $mess)
     {
-        $transport = \Swift_SmtpTransport::newInstance('smtp.yandex.ru', 587, 'ssl')
-            ->setUsername('ist.eropkin')
+        $transport = \Swift_SmtpTransport::newInstance('smtp.mail', 465, 'ssl')
+            ->setUsername('ist70')
             ->setPassword('');
 
         $mailer = \Swift_Mailer::newInstance($transport);
 
         $message = \Swift_Message::newInstance()
-            ->setFrom('ist.eropkin@yandex.ru')
+            ->setFrom('ist70@mail.ru')
             ->setTo($to)
             ->setSubject($title)
             ->setBody($mess);
