@@ -38,6 +38,9 @@ try {
     $controller404->action('error404', $e->getMessage());
     exit(0);
 } catch (Exception $e) {
+    if ($e instanceof \App\Core\Dbase\DbException) {
+        \App\Core\Mail\SenderMail::send();
+    }
     $controllerErr = new Error();
     $controllerErr->action('error', $e);
     exit(0);
