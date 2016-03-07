@@ -88,12 +88,12 @@ abstract class Model implements \Countable
      * Метод ищет все записи модели
      * @return array массив объектов
      */
-    public static function findAllEach()
+    public static function findEach($lim)
     {
         $db = Db::instance();
         return $db->queryEach(
             'SELECT * FROM ' . static::TABLE,
-            static::class
+            static::class, $lim
         );
     }
 

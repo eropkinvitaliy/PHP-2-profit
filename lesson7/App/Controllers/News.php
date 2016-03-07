@@ -15,7 +15,16 @@ class News extends Controller
      */
     protected function actionAll()
     {
-        $news = NewsModel::findAllEach();
+        $news = NewsModel::findAll();
+        $this->view->render('/news/index.html', [
+            'news' => $news,
+            'resource' => \PHP_Timer::resourceUsage()
+        ]);
+    }
+
+    protected function actionEach($lim)
+    {
+        $news = NewsModel::findEach($lim);
         $this->view->render('/news/index.html', [
             'news' => $news,
             'resource' => \PHP_Timer::resourceUsage()

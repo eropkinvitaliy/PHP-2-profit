@@ -86,18 +86,19 @@ class Db
         return [];
     }
 
-    public function queryEach($sql, $class, $options = [])
+    protected function gen($sth)
+    {
+        yield $sth->fetch();
+    }
+
+    public function queryEach($sql, $class, $lim = 1, $options = [])
     {
         try {
             $sth = $this->dbh->prepare($sql);
             $sth->setFetchMode(\PDO::FETCH_CLASS, $class);
             $res = $sth->execute($options);
-            $data = [];
             if (false !== $res) {
-                while ($row = $sth->fetch()) {
-                    $data[] = $row;
-                }
-                return $data;
+                return $this->gen($sth);
             }
         } catch (\PDOException $e) {
             throw new DbException('Запрос не выполнен. Ошибка.' . '<br>' . $e->getMessage());
