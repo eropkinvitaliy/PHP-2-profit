@@ -1,0 +1,32 @@
+{% extends "Layouts/index.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Таблица</h1>
+    {% if data %}
+    <table>
+        <thead>
+        <tr style="border: solid">
+            <td>N п.п</td>
+            {% for key in data|keys %}
+            <td style="border: solid">
+                {{ key }}
+            </td>
+            {% endfor %}
+        </tr>
+        </thead>
+    {% for row in data %}
+        <tr>
+    {% for key, item in row %}
+    <td>{{ key }}: {{ item }}</td>
+    {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+    {% else %}
+    <h2>Нет данных для таблицы</h2>
+    {% endif %}
+</div>
+
+{% endblock %}

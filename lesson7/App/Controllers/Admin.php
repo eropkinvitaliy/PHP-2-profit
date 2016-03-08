@@ -112,7 +112,23 @@ class Admin extends Controller
 
     protected function actionTable()
     {
-        $table = new AdminDataTable($row, $func);
+        $funcs = [
+            'sqrt' => function($data) {
+                return sqrt($data);
+            },
+            'square' => function($data) {
+                return $data*$data;
+            },
+            'coub' => function($data) {
+                return pow($data, 3);
+            },
+        ];
+        $table = new AdminDataTable([1, 2, 3, 4, 5], $funcs);
+        $table->render();
+        $this->view->render('/admin/table.html', [
+            'data' => $table->data,
+            'resource' => \PHP_Timer::resourceUsage()
+        ]);
     }
 
 }
