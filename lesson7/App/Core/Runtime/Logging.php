@@ -2,12 +2,11 @@
 
 namespace App\Core\Runtime;
 
+use App\Config;
 use Exception;
 
 class Logging
 {
-
-    const DEFAULT_FILENAME = __DIR__ . '/../../templates/runtime/logexception.txt';
 
     /**
      * Метод записывает в файл информацию о возникших во время работы Исключениях
@@ -16,7 +15,7 @@ class Logging
      */
     public static function toFile(Exception $e, $filename = '')
     {
-        $filename = !empty($filename) ? $filename : self::DEFAULT_FILENAME;
+        $filename = !empty($filename) ? $filename : Config::DEFAULT_FILENAME_LOG;
         $data = date('d-m-Y H:m:s') . '  ' . $e->getFile() . '  в строке: ' .
             $e->getLine() . ' код ошибки:  ' . $e->getCode() . '  ' . $e->getMessage();
         file_put_contents($filename, $data . PHP_EOL, FILE_APPEND);
