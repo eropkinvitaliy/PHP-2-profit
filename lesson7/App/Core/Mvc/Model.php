@@ -93,7 +93,7 @@ abstract class Model implements \Countable
         $db = Db::instance();
         return $db->queryEach(
             'SELECT * FROM ' . static::TABLE,
-            static::class, $lim
+            static::class
         );
     }
 

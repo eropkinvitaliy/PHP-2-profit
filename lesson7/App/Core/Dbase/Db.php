@@ -87,12 +87,12 @@ class Db
     }
 
     function fetchFromDb ($sth)  {
-        while  ($row = $sth->fetch)  {
+        while  ($row = $sth->fetch())  {
             yield $row ;
         }
     }
 
-    public function queryEach($sql, $class, $lim = 1, $options = [])
+    public function queryEach($sql, $class, $options = [])
     {
         try {
             $sth = $this->dbh->prepare($sql);
