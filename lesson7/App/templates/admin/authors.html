@@ -3,15 +3,23 @@
 {% block content %}
 
 <div class="container">
-    <h1>Таблица</h1>
+    <h1>Таблица авторов</h1>
     {% if authors %}
     <table style="width: 30%; border-style: solid">
-        {% for key, row in authors %}
+        {% set i = 0 %}
+        {% for author in authors %}
         <tr style="border: solid">
-            <td> {{ key }} : {{ row }}</td>
+            <td>
+                {% set i = i + 1 %}
+                {{ i }}
+            </td>
+            {% for key, item in author %}
+            <td style="border: solid">
+                {{ item }}
+            </td>
+            {% endfor %}
         </tr>
         {% endfor %}
-
     </table>
     {% else %}
     <h2>Нет данных для таблицы</h2>

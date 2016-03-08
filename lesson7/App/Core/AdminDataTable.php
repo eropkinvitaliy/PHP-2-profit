@@ -29,9 +29,11 @@ class AdminDataTable
     public function render()
     {
         foreach ($this->rows as $row) {
+            $item = [];
             foreach ($this->funcs as $func) {
-                $this->data[] = $func($row);
+                $item[] = $func($row);
             }
+            $this->data[] = $item;
         }
         return $this->data;
     }
