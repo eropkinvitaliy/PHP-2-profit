@@ -86,9 +86,10 @@ class Db
         return [];
     }
 
-    protected function gen($sth)
-    {
-        yield $sth->fetch();
+    function fetchFromDb ($sth)  {
+        while  ($row = $sth->fetch)  {
+            yield $row ;
+        }
     }
 
     public function queryEach($sql, $class, $lim = 1, $options = [])
@@ -98,7 +99,7 @@ class Db
             $sth->setFetchMode(\PDO::FETCH_CLASS, $class);
             $res = $sth->execute($options);
             if (false !== $res) {
-                return $this->gen($sth);
+                return $this->fetchFromDb($sth);
             }
         } catch (\PDOException $e) {
             throw new DbException('Запрос не выполнен. Ошибка.' . '<br>' . $e->getMessage());
