@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\AdminDataTable;
 use App\Core\Mvc\Controller;
+use App\Models\Author;
 use App\Models\News as NewsModel;
 use App\Core\Mvc\Exception404;
 use App\Config;
@@ -115,11 +116,30 @@ class Admin extends Controller
     {
         $funcs = Config::instance()->funcs;
         $table = new AdminDataTable([1, 2, 3, 4, 5], $funcs);
-        $table->render();
+        $table->render1();
         $this->view->render('/admin/table.html', [
             'data' => $table->data,
             'func' => $table->namefunc,
             'resource' => \PHP_Timer::resourceUsage()
+        ]);
+    }
+
+    protected function actionAuthors()
+    {
+        $authors = Author::findAll();
+        $table = new AdminDataTable($authors, [
+            function (Author $author) {
+                return $author->firstname;
+            },
+            function (Author $author) {
+                return $author->lastname;
+            },
+            function (Author $author) {
+                return $author->email;
+            },
+        ]);
+        $this->view->render('/admin/authors.html', [
+            'authors' => $table->render()
         ]);
     }
 

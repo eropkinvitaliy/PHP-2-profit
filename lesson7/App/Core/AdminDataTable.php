@@ -16,7 +16,7 @@ class AdminDataTable
         $this->funcs = $funcs;
     }
 
-    public function render()
+    public function render1()
     {
         foreach ($this->funcs as $key => $func) {
             foreach ($this->rows as $row) {
@@ -24,6 +24,16 @@ class AdminDataTable
             }
             $this->namefunc[] = $key;
         }
+    }
+
+    public function render()
+    {
+        foreach ($this->rows as $row) {
+            foreach ($this->funcs as $func) {
+                $this->data[] = $func($row);
+            }
+        }
+        return $this->data;
     }
 
 }
