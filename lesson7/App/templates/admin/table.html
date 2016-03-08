@@ -5,24 +5,29 @@
 <div class="container">
     <h1>Таблица</h1>
     {% if data %}
-    <table>
+    <table style="width: 30%; border-style: solid">
         <thead>
         <tr style="border: solid">
-            <td>N п.п</td>
-            {% for key in data|keys %}
+            <td>Данные</td>
+            {% for name in func %}
             <td style="border: solid">
-                {{ key }}
+                {{ name }}
             </td>
             {% endfor %}
         </tr>
         </thead>
-    {% for row in data %}
-        <tr>
-    {% for key, item in row %}
-    <td>{{ key }}: {{ item }}</td>
-    {% endfor %}
+
+        {% for key, row in data %}
+        <tr style="border: solid">
+            <td> {{ key }}</td>
+            {% for item in row %}
+            <td style="border: solid">
+                {{ item|number_format(2) }}
+            </td>
+            {% endfor %}
         </tr>
-    {% endfor %}
+        {% endfor %}
+
     </table>
     {% else %}
     <h2>Нет данных для таблицы</h2>
@@ -30,3 +35,5 @@
 </div>
 
 {% endblock %}
+
+{% block memory %}{{ resource }}{% endblock %}

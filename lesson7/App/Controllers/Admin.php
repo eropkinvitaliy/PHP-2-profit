@@ -6,6 +6,7 @@ use App\Core\AdminDataTable;
 use App\Core\Mvc\Controller;
 use App\Models\News as NewsModel;
 use App\Core\Mvc\Exception404;
+use App\Config;
 
 class Admin extends Controller
 {
@@ -112,21 +113,12 @@ class Admin extends Controller
 
     protected function actionTable()
     {
-        $funcs = [
-            'sqrt' => function($data) {
-                return sqrt($data);
-            },
-            'square' => function($data) {
-                return $data*$data;
-            },
-            'coub' => function($data) {
-                return pow($data, 3);
-            },
-        ];
+        $funcs = Config::instance()->funcs;
         $table = new AdminDataTable([1, 2, 3, 4, 5], $funcs);
         $table->render();
         $this->view->render('/admin/table.html', [
             'data' => $table->data,
+            'func' => $table->namefunc,
             'resource' => \PHP_Timer::resourceUsage()
         ]);
     }

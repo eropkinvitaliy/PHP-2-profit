@@ -8,6 +8,7 @@ class AdminDataTable
     public $rows;
     public $funcs;
     public $data = [];
+    public $namefunc = [];
 
     public function __construct($rows, $funcs)
     {
@@ -17,10 +18,11 @@ class AdminDataTable
 
     public function render()
     {
-        foreach ($this->rows as $row) {
-            foreach ($this->funcs as $key => $func) {
-                $this->data[$key][$row] = $func($row);
+        foreach ($this->funcs as $key => $func) {
+            foreach ($this->rows as $row) {
+                $this->data[$row][$key] = $func($row);
             }
+            $this->namefunc[] = $key;
         }
     }
 
