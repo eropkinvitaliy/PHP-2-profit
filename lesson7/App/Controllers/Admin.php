@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Core\AdminDataTable;
 use App\Core\Mvc\Controller;
 use App\Models\News as NewsModel;
 use App\Core\Mvc\Exception404;
@@ -107,6 +108,11 @@ class Admin extends Controller
             throw new Exception404('Страница с такой новостью не найдена');
         }
         $this->redirect('/admin/');
+    }
+
+    protected function actionTable()
+    {
+        $table = new AdminDataTable($row, $func);
     }
 
 }

@@ -86,7 +86,7 @@ class Db
         return [];
     }
 
-    function fetchFromDb ($sth)  {
+    protected function fetchFromDb ($sth)  {
         while  ($row = $sth->fetch())  {
             yield $row ;
         }
